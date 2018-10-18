@@ -40,12 +40,15 @@ export function getNightSpots() {
                     return response.json()
                 }
             }).then(data => {
+                console.log(data)
                 let venueInfo = data.response.groups[0].items.map(dataItem => {
                     return {
                         "name": dataItem.venue.name,
                         "venueId": dataItem.venue.id,
                         "lat": dataItem.venue.location.lat,
                         "lng": dataItem.venue.location.lng,
+                        //icon is an object w/ keys: prefix,
+                        "icon": dataItem.venue.categories[0].icon,
                         "neighborhood": dataItem.venue.location.neighborhood,
                         "isVisible": true, //marker visibility
                         "listDetailVisible": false
@@ -68,17 +71,27 @@ export function createInitialMap(google) {
 }
 
 export function createMarkerArray(array, map, infoWin) {
-    console.log(infoWin)
     return array.map(spot => {
 
         let marker = new window.google.maps.Marker({
+            address: spot.address,
+            animation: ((spot.listDetailVisible && !this.props.state.showingInfoWindow) ? '1' : '0'),
+            hours: spot.hours,
             key: spot.venueId,
-            position: { lat: spot.lat, lng: spot.lng },
             map: map,
+            position: { lat: spot.lat, lng: spot.lng },
             title: spot.name,
-            animation: ((spot.listDetailVisible && !this.props.state.showingInfoWindow) ? '1' : '0')
+            rating: spot.rating
         })
         marker.addListener('click', () => {
+            const contentStr = `<div><strong> ${marker.title}</strong></div>
+        <div><p> ${marker.address && marker.address[0] && marker.address[0].formattedAddress[0] ? marker.address[0].formattedAddress[0] : ""}
+        ${marker.address && marker.address[0] && marker.address[0].formattedAddress[0] ? marker.address[0].formattedAddress[1] : ""}
+        Hours: ${marker.hours ? marker.hours : "Hours unknown"}
+        Rating: ${marker.rating ? marker.rating : "Rating Unknown"}</p></div>`
+
+            // console.log(marker.address)
+            infoWin.setContent(contentStr)
             infoWin.open(map, marker)
         })
         return marker

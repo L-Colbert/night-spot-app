@@ -21,14 +21,17 @@ class App extends Component {
 
     let googleMapsPromise = load_google_maps()
     let APIdata = getNightSpots()
-
     Promise.all([googleMapsPromise, APIdata])
-      .then(values => {
-        let google = values[0]
-        let nightSpots = values[1]
+    .then(values => {
+      let google = values[0]
+      let nightSpots = values[1]
+      console.log(nightSpots)
+        const contentStr= ``
         
         this.infowindow = new google.maps.InfoWindow({
-          content: `libby`
+          content: contentStr
+
+
         })
         this.setState({ nightSpots, currentlyShowing: nightSpots }, () => {
           this.map = createInitialMap()
