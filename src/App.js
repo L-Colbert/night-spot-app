@@ -1,27 +1,72 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray } from './util'
+import './css/App.css'
+// import MapContainer from './components/MapContainer'
+// import Sidebar from './components/Sidebar'
 
 class App extends Component {
+  state = {
+    staticMap: [],
+    nightSpots: [],
+    currentlyShowing: [],
+    markers: []
+  }
+
+  // Code provided by Ryan Waite
+  // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
+  componentDidMount() {
+
+    let googleMapsPromise = load_google_maps()
+    let APIdata = getNightSpots()
+
+    Promise.all([googleMapsPromise, APIdata])
+      .then(values => {
+        let google = values[0];
+        let nightSpots = values[1];
+
+        this.setState({ nightSpots, currentlyShowing: nightSpots }, () => {
+        this.map = createInitialMap()
+        let markersArray = createMarkerArray(nightSpots, this.map)
+          this.setState({ markers: markersArray }, () => {
+            console.log(this.state.markers)
+          })
+        })
+      })
+      .catch(error => {
+        console.log(`Promise all produced error: ${error}`)
+      })
+  }
+
   render() {
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className="App" >
+        <header role="banner" className="App-header">
+          <h1>
+            Party On!
+          </h1>
         </header>
-      </div>
-    );
+        <nav>
+          {/* <Sidebar
+            currentlyShowing={this.state.currentlyShowing}
+            changeSelection={this.changeSelection}
+            individualStateUpdate={this.individualStateUpdate}
+            state={this.state}
+            updateState={this.updateState}
+          /> */}
+        </nav>
+          <div id="map"></div>
+        {/* <MapContainer
+          closeInfoWindow={this.closeInfoWindow}
+          // createArrayOfMarkers={this.createArrayOfMarkers}
+          individualStateUpdate={this.individualStateUpdate}
+          openInfoWindow={this.openInfoWindow}
+          updateMarkers={this.updateMarkers}
+          state={this.state}
+        /> */}
+      </div >
+    )
   }
 }
 
