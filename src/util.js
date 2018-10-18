@@ -1,3 +1,5 @@
+// import infoWWindow from "./components/Infowindow";
+
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
         // define the global callback that will run when google maps is loaded
@@ -65,18 +67,20 @@ export function createInitialMap(google) {
 
 }
 
-export function createMarkerArray(array, map) {
+export function createMarkerArray(array, map, infoWin) {
+    console.log(infoWin)
     return array.map(spot => {
-        return new window.google.maps.Marker(
-            {
-                // position: new this.props.google.maps.LatLng(spot.lat, spot.lng),
-                key: spot.venueId,
-                position: { lat: spot.lat, lng: spot.lng },
-                map: map,
-                title: spot.name,
-                onClick: () => this.props.openInfoWindow,
-                animation: ((spot.listDetailVisible && !this.props.state.showingInfoWindow) ? '1' : '0')
-            }
-        )
+
+        let marker = new window.google.maps.Marker({
+            key: spot.venueId,
+            position: { lat: spot.lat, lng: spot.lng },
+            map: map,
+            title: spot.name,
+            animation: ((spot.listDetailVisible && !this.props.state.showingInfoWindow) ? '1' : '0')
+        })
+        marker.addListener('click', () => {
+            infoWin.open(map, marker)
+        })
+        return marker
     })
 }
