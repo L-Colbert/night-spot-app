@@ -4,12 +4,12 @@ import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray, g
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
-// import Sidebar from './components/Sidebar'
+import Sidebar from './components/Sidebar'
 
 class App extends Component {
   state = {
     // staticMap: [],
-    // nightSpots: [],
+    nightSpots: [],
     currentlyShowing: [],
     markers: [],
     onlyOneInfoWindow: null,
@@ -32,7 +32,7 @@ class App extends Component {
           content: '',
           maxWidth: 300
         })
-        this.setState({ currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
+        this.setState({ nightSpots, currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
           this.map = createInitialMap()
         })
         this.google.maps.event.addListener(this.map, 'click', () => {
@@ -50,6 +50,15 @@ class App extends Component {
     this.setState({ key: value })
   }
 
+  changeSelection = (selectedValue) => {
+    if (selectedValue === "Select a") {
+      this.setState({ currentlyShowing: this.state.nightSpots })
+    } else {
+      const holder = this.state.nightSpots.filter(spot => spot.neighborhood === selectedValue)
+      this.setState({ currentlyShowing: holder })
+    }
+  }
+
   render() {
 
     return (
@@ -60,13 +69,13 @@ class App extends Component {
           </h1>
         </header>
         <nav>
-          {/* <Sidebar
+          <Sidebar
             currentlyShowing={this.state.currentlyShowing}
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}  
             state={this.state}
             updateState={this.updateState}
-          /> */}
+          />
         </nav>
         <MapContainer
           individualStateUpdate={this.individualStateUpdate}

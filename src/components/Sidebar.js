@@ -13,19 +13,6 @@ class Sidebar extends Component {
         detailsOpen: {},
     }
 
-    moveInfoWindow = (spot) => {
-        let props = {
-            name: spot.name,
-            // address: spot.location.address,
-            rating: spot.rating,
-            // google: { maps: { … } }
-            // hours: undefined
-            map: this.props.map,
-            // mapCenter: { lat: 33.748995, lng: -84.387982 }
-            position: { lat: spot.lat, lng: spot.lng }
-        }
-        this.props.updateState(props, { lat: spot.lat, lng: spot.lng })
-    }
 
     // https://eddyerburgh.me/toggle-visibility-with-react
     toggleDiv(spot) {

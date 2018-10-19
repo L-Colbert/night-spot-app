@@ -12,16 +12,6 @@ class MapContainer extends Component {
         markers: []
     }
 
-    mapClicked = () => {
-        if (this.props.state.showingInfoWindow) {
-            this.props.individualStateUpdate({ showingInfoWindow: false })
-        }
-    }
-
-    onClose = () => {
-        this.props.closeInfoWindow()
-    }
-
     render() {
 
         return (
