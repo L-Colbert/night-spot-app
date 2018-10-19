@@ -22,7 +22,6 @@ export function createInitialMap(google) {
         zoom: 10,
         center: atl
     })
-
 }
 
 export function getNightSpots() {
@@ -47,7 +46,6 @@ export function getNightSpots() {
                     return response.json()
                 }
             }).then(data => {
-                console.log(data)
                 let venueInfo = data.response.groups[0].items.map(dataItem => {
                     return {
                         "name": dataItem.venue.name,
@@ -104,8 +102,6 @@ export function getSpotDetails(spotsArray) {
 
 export function createMarkerArray(array, map, infoWin) {
     return array.map(spot => {
-        console.log(array)
-        console.log(spot.rating)
         let marker = new window.google.maps.Marker({
             key: spot.venueId,
             map: map,
@@ -113,13 +109,11 @@ export function createMarkerArray(array, map, infoWin) {
             title: spot.name,
         })
         marker.addListener('click', () => {
-            console.log(spot.location)
             const contentStr = `<div><strong> ${spot.name}</strong></div>
         <div><p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
         ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
         Hours: ${spot.hours ? spot.hours : "Hours unknown"}
         Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
-
             // To change the maximum width when changing content,
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)

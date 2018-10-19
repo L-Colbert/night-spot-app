@@ -9,9 +9,11 @@ import MapContainer from './components/MapContainer'
 class App extends Component {
   state = {
     // staticMap: [],
-    nightSpots: [],
+    // nightSpots: [],
     currentlyShowing: [],
-    markers: []
+    markers: [],
+    onlyOneInfoWindow: null,
+    showingInfoWindow: false
   }
 
   // Code provided by Ryan Waite
@@ -23,29 +25,36 @@ class App extends Component {
 
     Promise.all([googleMapsPromise, APIdata])
       .then(values => {
-        let google = values[0]
+        this.google = values[0]
         let nightSpots = values[1]
-        this.infowindow = new google.maps.InfoWindow({
+        const spotDetails = getSpotDetails(nightSpots)
+        let infowindow = new this.google.maps.InfoWindow({
           content: '',
           maxWidth: 100
         })
-        const spotDetails = getSpotDetails(nightSpots)
-        this.setState({ currentlyShowing: nightSpots }, () => {
+        this.setState({ currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
           this.map = createInitialMap()
-          let markersArray = createMarkerArray(spotDetails, this.map, this.infowindow)
-          this.setState({ markers: markersArray }, () => {
-            console.log(this.state.markers)
-          })
         })
+        this.google.maps.event.addListener(this.map, 'click', () => {
+          infowindow.close()
+        })
+        let [markersArray] = createMarkerArray(spotDetails, this.map, infowindow)
+        // this.setState({ markers: markersArray, showingInfoWindow: isInfoWindowOpen }, () => {
+        this.setState({ markers: markersArray })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })
+  }
+
+  individualStateUpdate = (key, value) => {
+    this.setState({ key: value })
   }
 
   render() {
 
     return (
       <div className="App" >
+        {console.log(this.state.showingInfoWindow)}
         <header role="banner" className="App-header">
           <h1>
             Party On!
@@ -55,16 +64,13 @@ class App extends Component {
           {/* <Sidebar
             currentlyShowing={this.state.currentlyShowing}
             changeSelection={this.changeSelection}
-            individualStateUpdate={this.individualStateUpdate}
+            individualStateUpdate={this.individualStateUpdate}  
             state={this.state}
             updateState={this.updateState}
           /> */}
         </nav>
         <MapContainer
-          closeInfoWindow={this.closeInfoWindow}
-          // individualStateUpdate={this.individualStateUpdate}
-          openInfoWindow={this.openInfoWindow}
-          // updateMarkers={this.updateMarkers}
+          individualStateUpdate={this.individualStateUpdate}
           state={this.state}
         />
       </div>
