@@ -30,7 +30,7 @@ class App extends Component {
         const spotDetails = getSpotDetails(nightSpots)
         let infowindow = new this.google.maps.InfoWindow({
           content: '',
-          maxWidth: 100
+          maxWidth: 300
         })
         this.setState({ currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
           this.map = createInitialMap()
@@ -54,7 +54,6 @@ class App extends Component {
 
     return (
       <div className="App" >
-        {console.log(this.state.showingInfoWindow)}
         <header role="banner" className="App-header">
           <h1>
             Party On!

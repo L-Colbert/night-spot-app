@@ -52,12 +52,12 @@ export function getNightSpots() {
                         "venueId": dataItem.venue.id,
                         "lat": dataItem.venue.location.lat,
                         "lng": dataItem.venue.location.lng,
-                        //icon is an object w/ keys: prefix,
+                        //icon is an object w/ keys: prefix, suffix
                         "icon": dataItem.venue.categories[0].icon,
                         "neighborhood": dataItem.venue.location.neighborhood,
                         "isVisible": true, //marker visibility
                         "listDetailVisible": false,
-                        "rating": dataItem.venue.rating
+                        "rating": dataItem.venue.rating,
                     }
                 })
                 resolve(venueInfo)
@@ -109,11 +109,14 @@ export function createMarkerArray(array, map, infoWin) {
             title: spot.name,
         })
         marker.addListener('click', () => {
+            const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
+                `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
             const contentStr = `<div><strong> ${spot.name}</strong></div>
-        <div><p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
-        ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
-        Hours: ${spot.hours ? spot.hours : "Hours unknown"}
-        Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
+            <div>${imgTag}
+            <p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
+            ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
+            Hours: ${spot.hours ? spot.hours : "Hours unknown"}
+            Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
             // To change the maximum width when changing content,
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
