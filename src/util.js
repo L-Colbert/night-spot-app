@@ -1,5 +1,3 @@
-// import infoWWindow from "./components/Infowindow";
-
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
         // define the global callback that will run when google maps is loaded
@@ -16,6 +14,15 @@ export function load_google_maps() {
         script.async = true;
         document.body.appendChild(script);
     });
+}
+
+export function createInitialMap(google) {
+    const atl = { lat: 33.748995, lng: -84.387982 }
+    return new window.google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: atl
+    })
+
 }
 
 export function getNightSpots() {
@@ -51,7 +58,8 @@ export function getNightSpots() {
                         "icon": dataItem.venue.categories[0].icon,
                         "neighborhood": dataItem.venue.location.neighborhood,
                         "isVisible": true, //marker visibility
-                        "listDetailVisible": false
+                        "listDetailVisible": false,
+                        "rating": dataItem.venue.rating
                     }
                 })
                 resolve(venueInfo)
@@ -61,36 +69,59 @@ export function getNightSpots() {
     })
 }
 
-export function createInitialMap(google) {
-    const atl = { lat: 33.748995, lng: -84.387982 }
-    return new window.google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: atl
-    })
+export function getSpotDetails(spotsArray) {
+    if (!spotsArray) {
+        return null
+    }
+    spotsArray.map(spot => {
+        let DetailParams = [
+            // 'id=' + spot.venueId,
+            `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
+            `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
+            `v=20181003`
+        ].join('&')
 
+        // let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
+
+        // fetch(detailsUrl)
+        fetch('../details.json')
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+            }).then(data => {
+                const match = spotsArray.find(spot => spot.venueId === data.response.venue.id)
+                return (Object.assign(match, data.response.venue))
+            })
+            .then(addSpot => {
+                return (Object.assign(spotsArray, addSpot))
+            }).catch(error => {
+                console.log(`No spot details because: ${error}`)
+            })
+    })
+    return spotsArray
 }
 
 export function createMarkerArray(array, map, infoWin) {
     return array.map(spot => {
-
+        console.log(array)
+        console.log(spot.rating)
         let marker = new window.google.maps.Marker({
-            address: spot.address,
-            animation: ((spot.listDetailVisible && !this.props.state.showingInfoWindow) ? '1' : '0'),
-            hours: spot.hours,
             key: spot.venueId,
             map: map,
             position: { lat: spot.lat, lng: spot.lng },
             title: spot.name,
-            rating: spot.rating
         })
         marker.addListener('click', () => {
-            const contentStr = `<div><strong> ${marker.title}</strong></div>
-        <div><p> ${marker.address && marker.address[0] && marker.address[0].formattedAddress[0] ? marker.address[0].formattedAddress[0] : ""}
-        ${marker.address && marker.address[0] && marker.address[0].formattedAddress[0] ? marker.address[0].formattedAddress[1] : ""}
-        Hours: ${marker.hours ? marker.hours : "Hours unknown"}
-        Rating: ${marker.rating ? marker.rating : "Rating Unknown"}</p></div>`
+            console.log(spot.location)
+            const contentStr = `<div><strong> ${spot.name}</strong></div>
+        <div><p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
+        ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
+        Hours: ${spot.hours ? spot.hours : "Hours unknown"}
+        Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
 
-            // console.log(marker.address)
+            // To change the maximum width when changing content,
+            // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
         })

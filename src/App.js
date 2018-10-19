@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray } from './util'
+import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray, getSpotDetails } from './util'
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
-
 // import Sidebar from './components/Sidebar'
 
 class App extends Component {
@@ -19,31 +18,26 @@ class App extends Component {
   // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
   componentDidMount() {
 
-    let googleMapsPromise = load_google_maps()
-    let APIdata = getNightSpots()
+    const googleMapsPromise = load_google_maps()
+    const APIdata = getNightSpots()
+
     Promise.all([googleMapsPromise, APIdata])
-    .then(values => {
-      let google = values[0]
-      let nightSpots = values[1]
-      console.log(nightSpots)
-        const contentStr= ``
-        
+      .then(values => {
+        let google = values[0]
+        let nightSpots = values[1]
         this.infowindow = new google.maps.InfoWindow({
-          content: contentStr
-
-
+          content: '',
+          maxWidth: 100
         })
-        this.setState({ nightSpots, currentlyShowing: nightSpots }, () => {
+        const spotDetails = getSpotDetails(nightSpots)
+        this.setState({ currentlyShowing: nightSpots }, () => {
           this.map = createInitialMap()
-          let markersArray = createMarkerArray(nightSpots, this.map, this.infowindow)
+          let markersArray = createMarkerArray(spotDetails, this.map, this.infowindow)
           this.setState({ markers: markersArray }, () => {
             console.log(this.state.markers)
           })
         })
-
-
-      })
-      .catch(error => {
+      }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })
   }
@@ -68,7 +62,6 @@ class App extends Component {
         </nav>
         <MapContainer
           closeInfoWindow={this.closeInfoWindow}
-          // createArrayOfMarkers={this.createArrayOfMarkers}
           // individualStateUpdate={this.individualStateUpdate}
           openInfoWindow={this.openInfoWindow}
           // updateMarkers={this.updateMarkers}
