@@ -3,6 +3,7 @@ import '../css/App.css'
 import ListItem from './ListItem'
 import PropTypes from 'prop-types'
 import DropDown from './DropDown'
+import foursquare from '../img/small-pink-foursquare-grey.png'
 
 class Sidebar extends Component {
     /**
@@ -62,6 +63,7 @@ class Sidebar extends Component {
                 <DropDown
                     changeSelection={this.props.changeSelection} />
                 <h2>Search Results</h2>
+                <img src={foursquare} alt="attribution four square" ></img>
                 <ul>
                     {appState.currentlyShowing.map(spot => (
                         <div key={spot.venueId} className="list-items">
