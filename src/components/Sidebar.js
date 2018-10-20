@@ -27,13 +27,17 @@ class Sidebar extends Component {
         const { appState } = this.props
         const searchResults = appState.currentlyShowing
         const currentlyOpen = this.state.detailsOpen
-        const toggleInfoWindow = (spot) => {
+        const openInfoWindow = (spot) => {
             const match = appState.markers.find(marker => marker.key === spot.venueId)
+            match.setAnimation(window.google.maps.Animation.BOUNCE)
+            setTimeout(() => {
+                match.setAnimation(window.google.maps.Animation.null)
+            }, 1000)
             window.google.maps.event.trigger(match, 'click')
         }
         searchResults.forEach(result => {
-            //if list details are visible, close them and
-            //close the info window and return
+            //if list details are visible, close it,
+            //close the info window, and return
             if (result.listDetailVisible) {
                 result.listDetailVisible = !result.listDetailVisible
                 appState.onlyOneInfoWindow.close()
@@ -44,7 +48,7 @@ class Sidebar extends Component {
                 result.listDetailVisible = !result.listDetailVisible
                 currentlyOpen.listDetailVisible = false
                 this.setState({ detailsOpen: spot })
-                toggleInfoWindow(spot)
+                openInfoWindow(spot)
             }
         })
         this.props.individualStateUpdate('currentlyShowing', searchResults)

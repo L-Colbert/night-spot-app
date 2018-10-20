@@ -152,6 +152,7 @@ export function createMarkerArray(array, map, infoWin) {
             map: map,
             position: { lat: spot.lat, lng: spot.lng },
             title: spot.name,
+            animation: window.google.maps.Animation.DROP
         })
         //on marker click, zooms in and displays infowindow
         marker.addListener('click', () => {
@@ -170,7 +171,6 @@ export function createMarkerArray(array, map, infoWin) {
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
-
         })
         return marker
     })
