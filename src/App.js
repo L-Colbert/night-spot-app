@@ -41,6 +41,7 @@ class App extends Component {
           content: '',
           maxWidth: 300
         })
+
         //stores data in state
         this.setState({ nightSpots, currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
           this.map = createInitialMap()
@@ -49,12 +50,13 @@ class App extends Component {
         this.google.maps.event.addListener(this.map, 'click', () => {
           infowindow.close()
         })
+        this.google.maps.event.addListener(infowindow,'closeclick', () => {
+          this.map.setZoom(10)
+        })
         //crates array of markers
         let markersArray = createMarkerArray(spotDetails, this.map, infowindow)
         // this.setState({ markers: markersArray, showingInfoWindow: isInfoWindowOpen }, () => {
-        this.setState({ markers: markersArray }, () => {
-          console.log(this.state.markers)
-        })
+        this.setState({ markers: markersArray })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })

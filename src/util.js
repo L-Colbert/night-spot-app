@@ -160,7 +160,7 @@ export function createMarkerArray(array, map, infoWin) {
 
         //on marker click, zooms in and displays infowindow
         marker.addListener('click', () => {
-            map.setZoom(14);
+            map.setZoom(12);
             map.setCenter(marker.getPosition());
 
             const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
