@@ -51,7 +51,6 @@ class App extends Component {
         })
         //crates array of markers
         let markersArray = createMarkerArray(spotDetails, this.map, infowindow)
-        console.log(markersArray)
         // this.setState({ markers: markersArray, showingInfoWindow: isInfoWindowOpen }, () => {
         this.setState({ markers: markersArray }, () => {
           console.log(this.state.markers)
@@ -99,10 +98,10 @@ class App extends Component {
         </header>
         <nav>
           <Sidebar
-            currentlyShowing={this.state.currentlyShowing}
+            // currentlyShowing={this.state.currentlyShowing}
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}
-            state={this.state}
+            appState={this.state}
             updateState={this.updateState}
           />
         </nav>
