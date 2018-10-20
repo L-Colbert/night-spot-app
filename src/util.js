@@ -1,3 +1,10 @@
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
         // define the global callback that will run when google maps is loaded
@@ -16,14 +23,38 @@ export function load_google_maps() {
     });
 }
 
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 export function createInitialMap(google) {
     const atl = { lat: 33.748995, lng: -84.387982 }
-    return new window.google.maps.Map(document.getElementById('map'), {
+    const map = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: atl
     })
+
+    // let infowindow = new this.google.maps.InfoWindow({
+    //     content: '',
+    //     maxWidth: 300
+    // })
+
+    // this.google.maps.event.addListener(map, 'click', () => {
+    //     infowindow.close()
+    // })
+    return map
 }
 
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 export function getNightSpots() {
 
     // let fourSqParams = [
@@ -67,6 +98,13 @@ export function getNightSpots() {
     })
 }
 
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 export function getSpotDetails(spotsArray) {
     if (!spotsArray) {
         return null
@@ -100,6 +138,13 @@ export function getSpotDetails(spotsArray) {
     return spotsArray
 }
 
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 export function createMarkerArray(array, map, infoWin) {
     return array.map(spot => {
         let marker = new window.google.maps.Marker({
@@ -108,7 +153,11 @@ export function createMarkerArray(array, map, infoWin) {
             position: { lat: spot.lat, lng: spot.lng },
             title: spot.name,
         })
+        //on marker click, zooms in and displays infowindow
         marker.addListener('click', () => {
+            map.setZoom(14);
+            map.setCenter(marker.getPosition());
+
             const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
                 `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
             const contentStr = `<div><strong> ${spot.name}</strong></div>
@@ -121,6 +170,7 @@ export function createMarkerArray(array, map, infoWin) {
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
+
         })
         return marker
     })

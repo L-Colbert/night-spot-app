@@ -7,6 +7,14 @@ import MapContainer from './components/MapContainer'
 import Sidebar from './components/Sidebar'
 
 class App extends Component {
+  /**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
+
   state = {
     // staticMap: [],
     nightSpots: [],
@@ -28,28 +36,49 @@ class App extends Component {
         this.google = values[0]
         let nightSpots = values[1]
         const spotDetails = getSpotDetails(nightSpots)
+        //creates infowindow
         let infowindow = new this.google.maps.InfoWindow({
           content: '',
           maxWidth: 300
         })
+        //stores data in state
         this.setState({ nightSpots, currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
           this.map = createInitialMap()
         })
+        //closes infowindow when map is clicked
         this.google.maps.event.addListener(this.map, 'click', () => {
           infowindow.close()
         })
-        let [markersArray] = createMarkerArray(spotDetails, this.map, infowindow)
+        //crates array of markers
+        let markersArray = createMarkerArray(spotDetails, this.map, infowindow)
+        console.log(markersArray)
         // this.setState({ markers: markersArray, showingInfoWindow: isInfoWindowOpen }, () => {
-        this.setState({ markers: markersArray })
+        this.setState({ markers: markersArray }, () => {
+          console.log(this.state.markers)
+        })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })
   }
 
+  /**
+   * Operates on an instance of MyClass and returns something.
+   * @param {!MyClass} obj An object that for some reason needs detailed
+   *     explanation that spans multiple lines.
+   * @param {!OtherClass} obviousOtherClass
+   * @return {boolean} Whether something occurred.
+   */
   individualStateUpdate = (key, value) => {
     this.setState({ key: value })
   }
 
+  /**
+   * Operates on an instance of MyClass and returns something.
+   * @param {!MyClass} obj An object that for some reason needs detailed
+   *     explanation that spans multiple lines.
+   * @param {!OtherClass} obviousOtherClass
+   * @return {boolean} Whether something occurred.
+   */
   changeSelection = (selectedValue) => {
     if (selectedValue === "Select a") {
       this.setState({ currentlyShowing: this.state.nightSpots })
@@ -72,7 +101,7 @@ class App extends Component {
           <Sidebar
             currentlyShowing={this.state.currentlyShowing}
             changeSelection={this.changeSelection}
-            individualStateUpdate={this.individualStateUpdate}  
+            individualStateUpdate={this.individualStateUpdate}
             state={this.state}
             updateState={this.updateState}
           />
