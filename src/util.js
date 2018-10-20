@@ -33,7 +33,7 @@ export function load_google_maps() {
 export function createInitialMap(google) {
     const atl = { lat: 33.748995, lng: -84.387982 }
     const map = new window.google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 12,
         center: atl
     })
 
@@ -146,6 +146,7 @@ export function getSpotDetails(spotsArray) {
  * @return {boolean} Whether something occurred.
  */
 export function createMarkerArray(array, map, infoWin) {
+    let bounds = new window.google.maps.LatLngBounds()
     return array.map(spot => {
         let marker = new window.google.maps.Marker({
             key: spot.venueId,
@@ -154,6 +155,9 @@ export function createMarkerArray(array, map, infoWin) {
             title: spot.name,
             animation: window.google.maps.Animation.DROP
         })
+
+        bounds.extend(marker.position)
+
         //on marker click, zooms in and displays infowindow
         marker.addListener('click', () => {
             map.setZoom(14);
@@ -172,6 +176,7 @@ export function createMarkerArray(array, map, infoWin) {
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
         })
+        map.fitBounds(bounds)
         return marker
     })
 }
