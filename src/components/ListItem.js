@@ -8,7 +8,6 @@ const ListItem = (props) => {
     const { spot } = props
     return (
         <div className="list-items">
-        {console.log(spot.canonicalUrl)}
             <div className="venue-photo">Photo goes here</div>
             {`${spot.location ? spot.location.formattedAddress[0] : `Address: Not found address`} 
                 ${spot.location ? spot.location.formattedAddress[1] : ``}`}

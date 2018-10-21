@@ -41,7 +41,7 @@ class Sidebar extends Component {
             //close the info window, and return
             if (result.listDetailVisible) {
                 result.listDetailVisible = !result.listDetailVisible
-                appState.onlyOneInfoWindow.close()
+                appState.onlyInfoWin.close()
                 return
             }
             //show clicked list item's details
@@ -52,6 +52,7 @@ class Sidebar extends Component {
                 openInfoWindow(spot)
             }
         })
+
         this.props.individualStateUpdate('currentlyShowing', searchResults)
     }
 

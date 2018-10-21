@@ -15,9 +15,9 @@ class MapContainer extends Component {
    * @param {!OtherClass} obviousOtherClass
    * @return {boolean} Whether something occurred.
    */
-    state = {
-        markers: []
-    }
+    // state = {
+    //     markers: []
+    // }
 
     render() {
 

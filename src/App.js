@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray, getSpotDetails } from './util'
+import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
@@ -17,46 +17,28 @@ class App extends Component {
 
   state = {
     // staticMap: [],
-    nightSpots: [],
     currentlyShowing: [],
     markers: [],
-    onlyOneInfoWindow: null,
+    onlyInfoWin: null,
     showingInfoWindow: false
   }
 
-  // Code provided by Ryan Waite
+  // adapted from code graciously provided by Ryan Waite
   // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
   componentDidMount() {
-
     const googleMapsPromise = load_google_maps()
     const APIdata = getNightSpots()
 
     Promise.all([googleMapsPromise, APIdata])
       .then(values => {
         this.google = values[0]
-        let nightSpots = values[1]
-        const spotDetails = getSpotDetails(nightSpots)
-        //creates infowindow
-        let infowindow = new this.google.maps.InfoWindow({
-          content: '',
-          maxWidth: 300
-        })
+        this.nightSpots = values[1]
+        const spotDetails = getSpotDetails(this.nightSpots)
+        this.infowindow = createInfoWindow(this.google)
+        this.map = createInitialMap(this.infowindow)
+        let markersArray = createMarkerArray(spotDetails, this.map, this.infowindow)
 
-        //stores data in state
-        this.setState({ nightSpots, currentlyShowing: nightSpots, onlyOneInfoWindow: infowindow }, () => {
-          this.map = createInitialMap()
-        })
-        //closes infowindow when map is clicked
-        this.google.maps.event.addListener(this.map, 'click', () => {
-          infowindow.close()
-        })
-        this.google.maps.event.addListener(infowindow,'closeclick', () => {
-          this.map.setZoom(10)
-        })
-        //crates array of markers
-        let markersArray = createMarkerArray(spotDetails, this.map, infowindow)
-        // this.setState({ markers: markersArray, showingInfoWindow: isInfoWindowOpen }, () => {
-        this.setState({ markers: markersArray })
+        this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow, markers: markersArray })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })
@@ -81,10 +63,28 @@ class App extends Component {
    * @return {boolean} Whether something occurred.
    */
   changeSelection = (selectedValue) => {
+    const holder = this.nightSpots.filter(spot => 
+      spot.neighborhood === selectedValue)
+
     if (selectedValue === "Select a") {
-      this.setState({ currentlyShowing: this.state.nightSpots })
+      this.setState({ currentlyShowing: this.nightSpots })
+      this.state.markers.forEach(marker => {
+            marker.setVisible(true)
+            })
+            this.map.setZoom(12)
     } else {
-      const holder = this.state.nightSpots.filter(spot => spot.neighborhood === selectedValue)
+
+      if (holder.length === 0 ) {
+        this.state.markers.forEach(marker => {
+          marker.setVisible(false)
+          })      
+      }
+        this.state.markers.forEach(marker => {
+            holder.forEach(place => {
+                marker.key === place.venueId ? 
+                marker.setVisible(true) : marker.setVisible(false)
+                })
+        })
       this.setState({ currentlyShowing: holder })
     }
   }
@@ -100,17 +100,12 @@ class App extends Component {
         </header>
         <nav>
           <Sidebar
-            // currentlyShowing={this.state.currentlyShowing}
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}
             appState={this.state}
-            updateState={this.updateState}
           />
         </nav>
-        <MapContainer
-          individualStateUpdate={this.individualStateUpdate}
-          state={this.state}
-        />
+        <MapContainer />
       </div>
     )
   }

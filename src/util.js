@@ -20,7 +20,7 @@ export function load_google_maps() {
         script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${API_KEY}&callback=resolveGoogleMapsPromise`;
         script.async = true;
         document.body.appendChild(script);
-    });
+    })
 }
 
 /**
@@ -30,21 +30,16 @@ export function load_google_maps() {
  * @param {!OtherClass} obviousOtherClass
  * @return {boolean} Whether something occurred.
  */
-export function createInitialMap(google) {
+export function createInitialMap(infoWin) {
     const atl = { lat: 33.748995, lng: -84.387982 }
     const map = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: atl
     })
-
-    // let infowindow = new this.google.maps.InfoWindow({
-    //     content: '',
-    //     maxWidth: 300
-    // })
-
-    // this.google.maps.event.addListener(map, 'click', () => {
-    //     infowindow.close()
-    // })
+    //closes infowindow when map is clicked
+    window.google.maps.event.addListener(map, 'click', () => {
+        infoWin.close()
+    })
     return map
 }
 
@@ -179,4 +174,16 @@ export function createMarkerArray(array, map, infoWin) {
         map.fitBounds(bounds)
         return marker
     })
+}
+
+export function createInfoWindow(google) {
+    let infowindow = new google.maps.InfoWindow({
+        content: '',
+        maxWidth: 300
+    })
+    // this.google.maps.event.addListener(infowindow,'closeclick', () => {
+    //   this.map.setZoom(10)
+    // })
+
+    return infowindow
 }
