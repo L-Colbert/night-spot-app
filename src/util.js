@@ -36,9 +36,16 @@ export function createInitialMap(infoWin) {
         zoom: 12,
         center: atl
     })
-    //closes infowindow when map is clicked
+    //closes infowindow when map is clicked and zooms
     window.google.maps.event.addListener(map, 'click', () => {
         infoWin.close()
+        map.setZoom(10)
+    })
+
+    //closes infowindow if map is clicked and zooms out
+    infoWin.addListener('closeclick', () =>{
+        infoWin.marker = null
+        map.setZoom(10)
     })
     return map
 }
