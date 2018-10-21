@@ -63,6 +63,17 @@ class App extends Component {
    * @return {boolean} Whether something occurred.
    */
   changeSelection = (selectedValue) => {
+    
+    // if(searchResults.length === 0 ) {
+    //     this.infowindow.marker = null
+    //     this.infowindow.close()
+    // }
+
+    this.infowindow.marker = null
+    this.infowindow.close()
+
+
+
     const holder = this.nightSpots.filter(spot => 
       spot.neighborhood === selectedValue)
 

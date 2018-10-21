@@ -36,6 +36,7 @@ class Sidebar extends Component {
             }, 1000)
             window.google.maps.event.trigger(match, 'click')
         }
+
         searchResults.forEach(result => {
             //if list details are visible, close it,
             //close the info window, and return
