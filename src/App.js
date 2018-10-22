@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { load_google_maps, getNightSpots, createInitialMap } from './util'
-import { setNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
+import { setNeighborhood, createNeighborhoodBounds, changeNeighborhoodBounds,createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
@@ -34,6 +34,9 @@ class App extends Component {
       .then(values => {
         this.google = values[0]
         this.nightSpots = values[1]
+        this.neighborhoodBounds = createNeighborhoodBounds()
+        this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
+        
         const spotDetails = getSpotDetails(this.nightSpots)
         this.infowindow = createInfoWindow(this.google)
         this.map = createInitialMap(this.infowindow)
@@ -65,14 +68,9 @@ class App extends Component {
    */
   changeSelection = (selectedValue) => {
 
-    setNeighborhoodBounds(selectedValue,this.map)
-
-
+    changeNeighborhoodBounds(selectedValue, this.neighborhoodBounds,this.map)
     this.infowindow.marker = null
     this.infowindow.close()
-
-
-
     const holder = this.nightSpots.filter(spot =>
       spot.neighborhood === selectedValue)
 
@@ -90,7 +88,7 @@ class App extends Component {
         })
       }
       this.state.markers.forEach(marker => {
-        holder.forEach(place => {
+        holder.forEach(place => { 
           marker.key === place.venueId ?
             marker.setVisible(true) : marker.setVisible(false)
         })

@@ -50,6 +50,37 @@ export function createInitialMap(infoWin) {
     return map
 }
 
+export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
+    let resultNeighbrhd = ''
+    return nightSpotsArr.map(spot => {
+        let match = null
+        neighbrhdboundsArr.forEach(Neighbrhd => {
+            if (Neighbrhd.contains(new window.google.maps.LatLng(spot.lat, spot.lng))) {
+                return match = Neighbrhd
+            }
+        })
+
+        let answer = ''
+        switch (match) {
+            case neighbrhdboundsArr[0]: answer = 'Buckhead'
+                break
+            case neighbrhdboundsArr[1]: answer = 'Downtown'
+                break
+            case neighbrhdboundsArr[2]: answer = 'Little Five Points'
+                break
+            case neighbrhdboundsArr[3]: answer = 'Midtown'
+                break
+            default:
+                answer = 'Not found'
+        }
+        resultNeighbrhd = answer
+        spot.neighborhood = resultNeighbrhd
+        console.log(spot)
+        return spot
+    })
+
+}
+
 /**
  * Operates on an instance of MyClass and returns something.
  * @param {!MyClass} obj An object that for some reason needs detailed
@@ -57,7 +88,7 @@ export function createInitialMap(infoWin) {
  * @param {!OtherClass} obviousOtherClass
  * @return {boolean} Whether something occurred.
  */
-export function getNightSpots() {
+export function getNightSpots(neighbrhdboundsArr) {
 
     // let fourSqParams = [
     //   // `ll=33.748995,-84.387982`,
@@ -72,8 +103,9 @@ export function getNightSpots() {
     // ].join('&')
 
     // let fourSqUrl = `https://api.foursquare.com/v2/venues/explore?${fourSqParams}`
+
     return new Promise(function (resolve, reject) {
-        fetch('../venues.json')
+        fetch('../response.json')
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -88,6 +120,10 @@ export function getNightSpots() {
                         //icon is an object w/ keys: prefix, suffix
                         "icon": dataItem.venue.categories[0].icon,
                         "neighborhood": dataItem.venue.location.neighborhood,
+                        // "neighborhood": (dataItem.venue.location.neighborhood !== undefined &&
+                        //     dataItem.venue.location.neighborhood.length > 0) ?
+                        //     dataItem.venue.location.neighborhood : setNeighborhood(dataItem.venue.location.lat, dataItem.venue.location.lng)
+                        //     ,
                         "isVisible": true, //marker visibility
                         "listDetailVisible": false,
                         "rating": dataItem.venue.rating,
@@ -112,12 +148,12 @@ export function getSpotDetails(spotsArray) {
         return null
     }
     spotsArray.map(spot => {
-        let DetailParams = [
+        // let DetailParams = [
             // 'id=' + spot.venueId,
-            `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
-            `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
-            `v=20181003`
-        ].join('&')
+        //     `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
+        //     `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
+        //     `v=20181003`
+        // ].join('&')
 
         // let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
 
@@ -191,43 +227,46 @@ export function createInfoWindow(google) {
     })
     return infowindow
 }
+export function createNeighborhoodBounds() {
+    const buckheadBounds = new window.google.maps.LatLngBounds(
+        new window.google.maps.LatLng(-33.792269, -84.460429),
+        new window.google.maps.LatLng(33.887703, -84.339777)
+    )
+    const downtownBounds = new window.google.maps.LatLngBounds(
+        new window.google.maps.LatLng(-33.942658, -84.406596),
+        new window.google.maps.LatLng(33.97138, -84.378626)
+    )
+    const litte5PtsBounds = new window.google.maps.LatLngBounds(
+        new window.google.maps.LatLng(-33.791912, -84.352697),
+        new window.google.maps.LatLng(33.797893, -84.348282)
+    )
+    const midtownBounds = new window.google.maps.LatLngBounds(
+        new window.google.maps.LatLng(-33.971228, -84.394419),
+        new window.google.maps.LatLng(34.002375, -84.364615)
+    )
 
-export function setNeighborhoodBounds(selectedValue, map) {
+    return [buckheadBounds, downtownBounds, litte5PtsBounds, midtownBounds]
+}
+
+export function changeNeighborhoodBounds(selectedValue, boundsarr, map) {
     if (selectedValue === 'Buckhead') {
-        const buckheadBounds = new window.google.maps.LatLngBounds(
-            new window.google.maps.LatLng(-33.792269, -84.460429),
-            new window.google.maps.LatLng(33.887703, -84.339777)
-        )
         map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))
         map.setZoom(12)
-        map.panToBounds(buckheadBounds)
+        map.panToBounds(boundsarr[0])
     } else if (selectedValue === 'Downtown') {
-        const downtownBounds = new window.google.maps.LatLngBounds(
-            new window.google.maps.LatLng(-33.742658, -84.406596),
-            new window.google.maps.LatLng(33.77138, -84.378626)
-        )
         map.setZoom(12)
         map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
-        map.panToBounds(downtownBounds)
+        map.panToBounds(boundsarr[1])
     } else if (selectedValue === 'Little Five Points') {
-        const litte5PtsBounds = new window.google.maps.LatLngBounds(
-            new window.google.maps.LatLng(-33.761912, -84.352697),
-            new window.google.maps.LatLng(33.767893, -84.348282)
-        )
         map.setZoom(12)
         map.setCenter(new window.google.maps.LatLng(33.764387, -84.349604))
-        map.panToBounds(litte5PtsBounds)
+        map.panToBounds(boundsarr[2])
     } else if (selectedValue === 'Midtown') {
-        const midtownBounds = new window.google.maps.LatLngBounds(
-            new window.google.maps.LatLng(-33.771228, -84.394419),
-            new window.google.maps.LatLng(33.802375, -84.364615)
-        )
         map.setZoom(12)
         map.setCenter(new window.google.maps.LatLng(33.783315, -84.383117))
-        map.panToBounds(midtownBounds)
+        map.panToBounds(boundsarr[3])
     } else {
         map.setZoom(10)
         map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
     }
-    // return (buckheadBounds,downtownBounds,litte5PtsBounds,midtownBounds)
 }

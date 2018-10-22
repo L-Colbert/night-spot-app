@@ -8,10 +8,6 @@ class DropDown extends Component {
    * @param {!OtherClass} obviousOtherClass
    * @return {boolean} Whether something occurred.
    */
-  
-    state = {
-        
-    }
     
     handleChange = (e) => {
         const selection = e.target.value
