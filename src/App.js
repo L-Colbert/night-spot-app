@@ -63,39 +63,78 @@ class App extends Component {
    * @return {boolean} Whether something occurred.
    */
   changeSelection = (selectedValue) => {
-    
-    // if(searchResults.length === 0 ) {
-    //     this.infowindow.marker = null
-    //     this.infowindow.close()
-    // }
+    // map.setCenter(new google.maps.LatLng(-34, 151));
+    // map.setCenter({ lat: -34, lng: 151 });
+    // myLatLng = new google.maps.LatLng({ lat: -34, lng: 151 });
+
+    const displayNeighborhood = () => {
+      if (selectedValue === 'Buckhead') {
+        const buckheadBounds = new this.google.maps.LatLngBounds(
+          new this.google.maps.LatLng(-33.792269, -84.460429),
+          new this.google.maps.LatLng(33.887703, -84.339777)
+        )
+        this.map.setCenter(new this.google.maps.LatLng(33.837266, -84.406761))
+        this.map.setZoom(12)
+        this.map.panToBounds(buckheadBounds)
+      } else if (selectedValue === 'Downtown') {
+        const downtownBounds = new this.google.maps.LatLngBounds(
+          new this.google.maps.LatLng(-33.742658, -84.406596),
+          new this.google.maps.LatLng(33.77138, -84.378626)
+        )
+        this.map.setZoom(12)
+        this.map.setCenter(new this.google.maps.LatLng(33.755711, -84.388372))
+        this.map.panToBounds(downtownBounds)
+      } else if (selectedValue === 'Little Five Points') {
+        const litte5PtsBounds = new this.google.maps.LatLngBounds(
+          new this.google.maps.LatLng(-33.761912, -84.352697),
+          new this.google.maps.LatLng(33.767893, -84.348282)
+        )
+        this.map.setZoom(12)
+        this.map.setCenter(new this.google.maps.LatLng(33.764387, -84.349604))
+        this.map.panToBounds(litte5PtsBounds)
+      } else if (selectedValue === 'Midtown') {
+        const midtownBounds = new this.google.maps.LatLngBounds(
+          new this.google.maps.LatLng(-33.771228, -84.394419),
+          new this.google.maps.LatLng(33.802375, -84.364615)
+        )
+        this.map.setZoom(12)
+        this.map.setCenter(new this.google.maps.LatLng(33.783315, -84.383117))
+        this.map.panToBounds(midtownBounds)
+      } else {
+        this.map.setZoom(10)
+        this.map.setCenter(new this.google.maps.LatLng(33.755711, -84.388372))
+      }
+    }
+    displayNeighborhood()
+
 
     this.infowindow.marker = null
     this.infowindow.close()
 
 
 
-    const holder = this.nightSpots.filter(spot => 
+    const holder = this.nightSpots.filter(spot =>
       spot.neighborhood === selectedValue)
 
     if (selectedValue === "Select a") {
       this.setState({ currentlyShowing: this.nightSpots })
       this.state.markers.forEach(marker => {
-            marker.setVisible(true)
-            this.map.setZoom(10)
-            })
+        marker.setVisible(true)
+        this.map.setZoom(10)
+      })
     } else {
 
-      if (holder.length === 0 ) {
+      if (holder.length === 0) {
         this.state.markers.forEach(marker => {
           marker.setVisible(false)
-          })      
-      }
-        this.state.markers.forEach(marker => {
-            holder.forEach(place => {
-                marker.key === place.venueId ? 
-                marker.setVisible(true) : marker.setVisible(false)
-                })
         })
+      }
+      this.state.markers.forEach(marker => {
+        holder.forEach(place => {
+          marker.key === place.venueId ?
+            marker.setVisible(true) : marker.setVisible(false)
+        })
+      })
       this.setState({ currentlyShowing: holder })
     }
   }

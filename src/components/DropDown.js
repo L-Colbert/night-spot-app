@@ -28,8 +28,8 @@ class DropDown extends Component {
                     <option value="Select a">All Party Spots</option>
                     <option value="Buckhead">Buckhead</option>
                     <option value="Downtown">Downtown</option>
-                    <option value="Midtown">Midtown</option>
                     <option value="Little Five Points">Little Five Points</option>
+                    <option value="Midtown">Midtown</option>
                 </select>
             </div>
         )

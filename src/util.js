@@ -43,7 +43,7 @@ export function createInitialMap(infoWin) {
     })
 
     //closes infowindow if map is clicked and zooms out
-    infoWin.addListener('closeclick', () =>{
+    infoWin.addListener('closeclick', () => {
         infoWin.marker = null
         map.setZoom(10)
     })
@@ -173,6 +173,7 @@ export function createMarkerArray(array, map, infoWin) {
             ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
             Hours: ${spot.hours ? spot.hours : "Hours unknown"}
             Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
+            //TODO: Add attribution
             // To change the maximum width when changing content,
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
@@ -188,9 +189,5 @@ export function createInfoWindow(google) {
         content: '',
         maxWidth: 300
     })
-    // this.google.maps.event.addListener(infowindow,'closeclick', () => {
-    //   this.map.setZoom(10)
-    // })
-
     return infowindow
 }
