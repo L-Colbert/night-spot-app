@@ -191,3 +191,43 @@ export function createInfoWindow(google) {
     })
     return infowindow
 }
+
+export function setNeighborhoodBounds(selectedValue, map) {
+    if (selectedValue === 'Buckhead') {
+        const buckheadBounds = new window.google.maps.LatLngBounds(
+            new window.google.maps.LatLng(-33.792269, -84.460429),
+            new window.google.maps.LatLng(33.887703, -84.339777)
+        )
+        map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))
+        map.setZoom(12)
+        map.panToBounds(buckheadBounds)
+    } else if (selectedValue === 'Downtown') {
+        const downtownBounds = new window.google.maps.LatLngBounds(
+            new window.google.maps.LatLng(-33.742658, -84.406596),
+            new window.google.maps.LatLng(33.77138, -84.378626)
+        )
+        map.setZoom(12)
+        map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
+        map.panToBounds(downtownBounds)
+    } else if (selectedValue === 'Little Five Points') {
+        const litte5PtsBounds = new window.google.maps.LatLngBounds(
+            new window.google.maps.LatLng(-33.761912, -84.352697),
+            new window.google.maps.LatLng(33.767893, -84.348282)
+        )
+        map.setZoom(12)
+        map.setCenter(new window.google.maps.LatLng(33.764387, -84.349604))
+        map.panToBounds(litte5PtsBounds)
+    } else if (selectedValue === 'Midtown') {
+        const midtownBounds = new window.google.maps.LatLngBounds(
+            new window.google.maps.LatLng(-33.771228, -84.394419),
+            new window.google.maps.LatLng(33.802375, -84.364615)
+        )
+        map.setZoom(12)
+        map.setCenter(new window.google.maps.LatLng(33.783315, -84.383117))
+        map.panToBounds(midtownBounds)
+    } else {
+        map.setZoom(10)
+        map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
+    }
+    // return (buckheadBounds,downtownBounds,litte5PtsBounds,midtownBounds)
+}

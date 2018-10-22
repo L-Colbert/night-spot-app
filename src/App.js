@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { load_google_maps, getNightSpots, createInitialMap, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
+import { load_google_maps, getNightSpots, createInitialMap } from './util'
+import { setNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
@@ -63,49 +64,8 @@ class App extends Component {
    * @return {boolean} Whether something occurred.
    */
   changeSelection = (selectedValue) => {
-    // map.setCenter(new google.maps.LatLng(-34, 151));
-    // map.setCenter({ lat: -34, lng: 151 });
-    // myLatLng = new google.maps.LatLng({ lat: -34, lng: 151 });
 
-    const displayNeighborhood = () => {
-      if (selectedValue === 'Buckhead') {
-        const buckheadBounds = new this.google.maps.LatLngBounds(
-          new this.google.maps.LatLng(-33.792269, -84.460429),
-          new this.google.maps.LatLng(33.887703, -84.339777)
-        )
-        this.map.setCenter(new this.google.maps.LatLng(33.837266, -84.406761))
-        this.map.setZoom(12)
-        this.map.panToBounds(buckheadBounds)
-      } else if (selectedValue === 'Downtown') {
-        const downtownBounds = new this.google.maps.LatLngBounds(
-          new this.google.maps.LatLng(-33.742658, -84.406596),
-          new this.google.maps.LatLng(33.77138, -84.378626)
-        )
-        this.map.setZoom(12)
-        this.map.setCenter(new this.google.maps.LatLng(33.755711, -84.388372))
-        this.map.panToBounds(downtownBounds)
-      } else if (selectedValue === 'Little Five Points') {
-        const litte5PtsBounds = new this.google.maps.LatLngBounds(
-          new this.google.maps.LatLng(-33.761912, -84.352697),
-          new this.google.maps.LatLng(33.767893, -84.348282)
-        )
-        this.map.setZoom(12)
-        this.map.setCenter(new this.google.maps.LatLng(33.764387, -84.349604))
-        this.map.panToBounds(litte5PtsBounds)
-      } else if (selectedValue === 'Midtown') {
-        const midtownBounds = new this.google.maps.LatLngBounds(
-          new this.google.maps.LatLng(-33.771228, -84.394419),
-          new this.google.maps.LatLng(33.802375, -84.364615)
-        )
-        this.map.setZoom(12)
-        this.map.setCenter(new this.google.maps.LatLng(33.783315, -84.383117))
-        this.map.panToBounds(midtownBounds)
-      } else {
-        this.map.setZoom(10)
-        this.map.setCenter(new this.google.maps.LatLng(33.755711, -84.388372))
-      }
-    }
-    displayNeighborhood()
+    setNeighborhoodBounds(selectedValue,this.map)
 
 
     this.infowindow.marker = null
