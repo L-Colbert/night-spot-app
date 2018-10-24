@@ -7,31 +7,23 @@ import '../css/App.css'
 
 
 
+/**
+* Operates on an instance of MyClass and returns something.
+* @param {!MyClass} obj An object that for some reason needs detailed
+*     explanation that spans multiple lines.
+* @param {!OtherClass} obviousOtherClass
+* @return {boolean} Whether something occurred.
+*/
 class MapContainer extends Component {
-      /**
-   * Operates on an instance of MyClass and returns something.
-   * @param {!MyClass} obj An object that for some reason needs detailed
-   *     explanation that spans multiple lines.
-   * @param {!OtherClass} obviousOtherClass
-   * @return {boolean} Whether something occurred.
-   */
-    // state = {
-    //     markers: []
-    // }
-
     render() {
-
         return (
-            <main role="main">
-                <div>
                     <div
                         id="map"
-                        role="application"
-                        onClick={this.mapClicked}>
-                        {/* <img src={this.props.copyOfMapAtl} alt="map" /> */}
+                        // role="application"
+                        // aria-label="location"
+                        >
+                        {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
                     </div>
-                </div>
-            </main >
         )
     }
 }

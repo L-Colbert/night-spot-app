@@ -61,25 +61,25 @@ class Sidebar extends Component {
         const { appState } = this.props
 
         return (
-            <div className="sidebar">
-                <DropDown
-                    changeSelection={this.props.changeSelection} />
-                <h2>Search Results</h2>
-                <img src={foursquare} alt="attribution four square" ></img>
-                <ul>
-                    {appState.currentlyShowing.map(spot => (
-                        <div key={spot.venueId} className="list-items">
-                            <a href="#/" onClick={() => this.toggleDiv(spot)}>
-                                {spot.name ? spot.name : `Name unknown`}
-                            </a>
-                            {
-                                spot.listDetailVisible && <ListItem
-                                    spot={spot} />
-                            }
-                        </div>
-                    ))}
-                </ul>
-            </div >
+            <section>
+                <div role="search" id="sidebar">
+                    <DropDown changeSelection={this.props.changeSelection} />
+                    <img src={foursquare} alt="attribution four square" ></img>
+                    <ul>
+                        {appState.currentlyShowing.map(spot => (
+                            <div key={spot.venueId} className="list-items">
+                                <a href="#/" onClick={() => this.toggleDiv(spot)}>
+                                    {spot.name ? spot.name : `Name unknown`}
+                                </a>
+                                {
+                                    spot.listDetailVisible && <ListItem
+                                        spot={spot} />
+                                }
+                            </div>
+                        ))}
+                    </ul>
+                </div >
+            </section>
         )
     }
 }

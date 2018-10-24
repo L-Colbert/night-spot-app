@@ -75,7 +75,6 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
         }
         resultNeighbrhd = answer
         spot.neighborhood = resultNeighbrhd
-        console.log(spot)
         return spot
     })
 

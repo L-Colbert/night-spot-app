@@ -16,11 +16,12 @@ class DropDown extends Component {
 
     render() {
         return (
-            <div className="drop-down-menu">
-                <div className="filter-results">
-                    Filter Results:
-                </div>
-                <select onChange={this.handleChange}>
+            <div>
+                <h2 tabIndex="0" >
+                    Search Results:
+                </h2>
+                <label className="drop-down-menu" htmlFor="select-menu">Filter By Neighborhood:</label>
+                <select id="select-menu" onChange={this.handleChange}>
                     <option value="Select a">All Party Spots</option>
                     <option value="Buckhead">Buckhead</option>
                     <option value="Downtown">Downtown</option>

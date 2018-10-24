@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { load_google_maps, getNightSpots, createInitialMap } from './util'
-import { setNeighborhood, createNeighborhoodBounds, changeNeighborhoodBounds,createMarkerArray, getSpotDetails, createInfoWindow } from './util'
+import { setNeighborhood, createNeighborhoodBounds, changeNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
-import MapContainer from './components/MapContainer'
-// import Infowindow from "./components/Infowindow";
 import Sidebar from './components/Sidebar'
 
 class App extends Component {
@@ -36,12 +34,10 @@ class App extends Component {
         this.nightSpots = values[1]
         this.neighborhoodBounds = createNeighborhoodBounds()
         this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
-        
         const spotDetails = getSpotDetails(this.nightSpots)
         this.infowindow = createInfoWindow(this.google)
         this.map = createInitialMap(this.infowindow)
         let markersArray = createMarkerArray(spotDetails, this.map, this.infowindow)
-
         this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow, markers: markersArray })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
@@ -68,12 +64,11 @@ class App extends Component {
    */
   changeSelection = (selectedValue) => {
 
-    changeNeighborhoodBounds(selectedValue, this.neighborhoodBounds,this.map)
+    changeNeighborhoodBounds(selectedValue, this.neighborhoodBounds, this.map)
     this.infowindow.marker = null
     this.infowindow.close()
     const holder = this.nightSpots.filter(spot =>
       spot.neighborhood === selectedValue)
-
     if (selectedValue === "Select a") {
       this.setState({ currentlyShowing: this.nightSpots })
       this.state.markers.forEach(marker => {
@@ -81,14 +76,13 @@ class App extends Component {
         this.map.setZoom(10)
       })
     } else {
-
       if (holder.length === 0) {
         this.state.markers.forEach(marker => {
           marker.setVisible(false)
         })
       }
       this.state.markers.forEach(marker => {
-        holder.forEach(place => { 
+        holder.forEach(place => {
           marker.key === place.venueId ?
             marker.setVisible(true) : marker.setVisible(false)
         })
@@ -102,18 +96,22 @@ class App extends Component {
     return (
       <div className="App" >
         <header role="banner" className="App-header">
-          <h1>
+          <h1 tabIndex="0">
             Party On!
           </h1>
         </header>
-        <nav>
+        <a href="#sidebar" className="skip-link">Skip to night club search</a>
+        <main>
+          <div id="map" tabIndex="-1" role="application" aria-label="location">
+            {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
+            {/* <MapContainer /> */}
+          </div>
           <Sidebar
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}
             appState={this.state}
           />
-        </nav>
-        <MapContainer />
+        </main>
       </div>
     )
   }
