@@ -13,11 +13,9 @@ class Sidebar extends Component {
  * @param {!OtherClass} obviousOtherClass
  * @return {boolean} Whether something occurred.
  */
-
     // static propTypes = {
     //     searchResults: PropTypes.array
     // }
-
     state = {
         detailsOpen: {}
     }
@@ -29,14 +27,13 @@ class Sidebar extends Component {
         const searchResults = appState.currentlyShowing
         const currentlyOpen = this.state.detailsOpen
         const openInfoWindow = (spot) => {
-            const match = appState.markers.find(marker => marker.key === spot.venueId)
+            const match = this.props.allMarkers.find(marker => marker.key === spot.venueId)
             match.setAnimation(window.google.maps.Animation.BOUNCE)
             setTimeout(() => {
                 match.setAnimation(window.google.maps.Animation.null)
             }, 1000)
             window.google.maps.event.trigger(match, 'click')
         }
-
         searchResults.forEach(result => {
             //if list details are visible, close it,
             //close the info window, and return
@@ -53,7 +50,6 @@ class Sidebar extends Component {
                 openInfoWindow(spot)
             }
         })
-
         this.props.individualStateUpdate('currentlyShowing', searchResults)
     }
 

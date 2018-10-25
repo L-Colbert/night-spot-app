@@ -64,7 +64,8 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
         switch (match) {
             case neighbrhdboundsArr[0]: answer = 'Buckhead'
                 break
-            case neighbrhdboundsArr[1]: answer = 'Downtown'
+            case
+                neighbrhdboundsArr[1]: answer = 'Downtown'
                 break
             case neighbrhdboundsArr[2]: answer = 'Little Five Points'
                 break
@@ -75,7 +76,6 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
         }
         resultNeighbrhd = answer
         spot.neighborhood = resultNeighbrhd
-        console.log(spot)
         return spot
     })
 
@@ -117,13 +117,8 @@ export function getNightSpots(neighbrhdboundsArr) {
                         "venueId": dataItem.venue.id,
                         "lat": dataItem.venue.location.lat,
                         "lng": dataItem.venue.location.lng,
-                        //icon is an object w/ keys: prefix, suffix
                         "icon": dataItem.venue.categories[0].icon,
                         "neighborhood": dataItem.venue.location.neighborhood,
-                        // "neighborhood": (dataItem.venue.location.neighborhood !== undefined &&
-                        //     dataItem.venue.location.neighborhood.length > 0) ?
-                        //     dataItem.venue.location.neighborhood : setNeighborhood(dataItem.venue.location.lat, dataItem.venue.location.lng)
-                        //     ,
                         "isVisible": true, //marker visibility
                         "listDetailVisible": false,
                         "rating": dataItem.venue.rating,
@@ -149,7 +144,7 @@ export function getSpotDetails(spotsArray) {
     }
     spotsArray.map(spot => {
         // let DetailParams = [
-            // 'id=' + spot.venueId,
+        // 'id=' + spot.venueId,
         //     `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
         //     `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
         //     `v=20181003`
@@ -248,7 +243,7 @@ export function createNeighborhoodBounds() {
     return [buckheadBounds, downtownBounds, litte5PtsBounds, midtownBounds]
 }
 
-export function changeNeighborhoodBounds(selectedValue, boundsarr, map) {
+export function panToNeighborhoodBounds(selectedValue, boundsarr, map) {
     if (selectedValue === 'Buckhead') {
         map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))
         map.setZoom(12)

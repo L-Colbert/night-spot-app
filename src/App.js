@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { load_google_maps, getNightSpots, createInitialMap } from './util'
-import { setNeighborhood, createNeighborhoodBounds, changeNeighborhoodBounds,createMarkerArray, getSpotDetails, createInfoWindow } from './util'
+import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import MapContainer from './components/MapContainer'
 // import Infowindow from "./components/Infowindow";
@@ -19,7 +19,6 @@ class App extends Component {
   state = {
     // staticMap: [],
     currentlyShowing: [],
-    markers: [],
     onlyInfoWin: null,
     showingInfoWindow: false
   }
@@ -36,13 +35,12 @@ class App extends Component {
         this.nightSpots = values[1]
         this.neighborhoodBounds = createNeighborhoodBounds()
         this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
-        
+
         const spotDetails = getSpotDetails(this.nightSpots)
         this.infowindow = createInfoWindow(this.google)
         this.map = createInitialMap(this.infowindow)
-        let markersArray = createMarkerArray(spotDetails, this.map, this.infowindow)
-
-        this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow, markers: markersArray })
+        this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
+        this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow /*, visibleMarkers: this.allMarkers*/ })
       }).catch(error => {
         console.log(`Promise all produced error: ${error}`)
       })
@@ -67,33 +65,39 @@ class App extends Component {
    * @return {boolean} Whether something occurred.
    */
   changeSelection = (selectedValue) => {
-
-    changeNeighborhoodBounds(selectedValue, this.neighborhoodBounds,this.map)
+    panToNeighborhoodBounds(selectedValue, this.neighborhoodBounds, this.map)
     this.infowindow.marker = null
     this.infowindow.close()
+    this.infowindow.setContent('')
+
     const holder = this.nightSpots.filter(spot =>
       spot.neighborhood === selectedValue)
 
+    this.allMarkers.forEach(marker => {
+      marker.setVisible(false)
+    })
+
     if (selectedValue === "Select a") {
       this.setState({ currentlyShowing: this.nightSpots })
-      this.state.markers.forEach(marker => {
+      this.allMarkers.forEach(marker => {
         marker.setVisible(true)
         this.map.setZoom(10)
       })
+    } else if (holder.length === 0) {
+      this.allMarkers.forEach(marker => {
+        marker.setVisible(false)
+        this.setState({ currentlyShowing: holder })
+      })
     } else {
-
-      if (holder.length === 0) {
-        this.state.markers.forEach(marker => {
-          marker.setVisible(false)
-        })
-      }
-      this.state.markers.forEach(marker => {
-        holder.forEach(place => { 
-          marker.key === place.venueId ?
-            marker.setVisible(true) : marker.setVisible(false)
+      this.allMarkers.forEach(marker => {
+        holder.forEach(place => {
+          if (marker.key === place.venueId) {
+            marker.setVisible(true)
+          }
         })
       })
       this.setState({ currentlyShowing: holder })
+      console.log(this.allMarkers)
     }
   }
 
@@ -111,6 +115,7 @@ class App extends Component {
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}
             appState={this.state}
+            allMarkers={this.allMarkers}
           />
         </nav>
         <MapContainer />

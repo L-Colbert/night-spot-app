@@ -9,8 +9,8 @@ class DropDown extends Component {
    * @return {boolean} Whether something occurred.
    */
     
-    handleChange = (e) => {
-        const selection = e.target.value
+    handleChange = (selection) => {
+        // const selection = e.target.value
         this.props.changeSelection(selection)
     }
 
@@ -20,7 +20,7 @@ class DropDown extends Component {
                 <div className="filter-results">
                     Filter Results:
                 </div>
-                <select onChange={this.handleChange}>
+                <select onChange={(e) => {this.handleChange(e.target.value)}}>
                     <option value="Select a">All Party Spots</option>
                     <option value="Buckhead">Buckhead</option>
                     <option value="Downtown">Downtown</option>
