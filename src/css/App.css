@@ -1,17 +1,14 @@
-body {
-  background-color: #322136;
-}
-
 /****** header ******/
 .App-header {
-  height: 67px;
-  margin-bottom: 10px;
+  height: 65px;
   z-index: 1001;
-  width: 100%;
+  width: 99%;
+  background-color: #322136
 }
 
 h1 {
-  color: #e19dcc
+  color: #e19dcc;
+  margin: 0;
 }
 
 h1, 
@@ -23,19 +20,54 @@ ul {
   padding: 9px
 }
 
-/****** navigation ******/
-nav {
+/****** main content ******/
+/*skip link
+Code from Udacity Aria lessons
+*/
+.skip-link{
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-position: 0%;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+main {
   text-align: left;
   width: 99%;
   overflow-y: scroll;
   visibility: visible;
   background-color: #e19dcc;
   font-size: calc(10px + 2vmin);
-  color: white;
-  height: 45%;
-  position: fixed;  
+  color: #322136;
+  height: 87vh;
   left: 0;
-  bottom: 0;
+}
+
+#map { 
+  height: 100%;
+  width: 100%;
+    position: fixed;
+    width: 99%;
+    height: 40vh;
+}
+
+/****** sidebar ******/
+#sidebar img {
+  padding-left: 12px;
+}
+
+#sidebar h3 {
+text-align: left;
+padding-left: 12px;
+}
+
+.drop-down-menu
+  {
+  text-align: left;
+    width: 100%;
 }
 
 .list-items {
@@ -43,20 +75,6 @@ nav {
   -moz-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   padding: 0px 0px 0 9px;
-}
-
-/****** main content ******/
-#map { 
-  height: 100%;
-  width: 100%;
-    position: fixed;
-    width: 99%;
-    height: 40vh;
-    top: 15%;
-}
-
-.drop-down-menu { 
-  width: 100%;
 }
 
 /****** footer ******/

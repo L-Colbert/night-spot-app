@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { load_google_maps, getNightSpots, createInitialMap } from './util'
 import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
-import MapContainer from './components/MapContainer'
-// import Infowindow from "./components/Infowindow";
 import Sidebar from './components/Sidebar'
 
 class App extends Component {
@@ -35,7 +33,6 @@ class App extends Component {
         this.nightSpots = values[1]
         this.neighborhoodBounds = createNeighborhoodBounds()
         this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
-
         const spotDetails = getSpotDetails(this.nightSpots)
         this.infowindow = createInfoWindow(this.google)
         this.map = createInitialMap(this.infowindow)
@@ -106,19 +103,23 @@ class App extends Component {
     return (
       <div className="App" >
         <header role="banner" className="App-header">
-          <h1>
+          <h1 tabIndex="0">
             Party On!
           </h1>
         </header>
-        <nav>
+        <a href="#sidebar" className="skip-link">Skip to night club search</a>
+        <main>
+          <div id="map" tabIndex="-1" role="application" aria-label="location">
+            {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
+            {/* <MapContainer /> */}
+          </div>
           <Sidebar
             changeSelection={this.changeSelection}
             individualStateUpdate={this.individualStateUpdate}
             appState={this.state}
             allMarkers={this.allMarkers}
           />
-        </nav>
-        <MapContainer />
+        </main>
       </div>
     )
   }
