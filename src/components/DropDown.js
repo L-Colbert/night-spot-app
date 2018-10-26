@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 
 class DropDown extends Component {
-      /**
-   * Operates on an instance of MyClass and returns something.
-   * @param {!MyClass} obj An object that for some reason needs detailed
-   *     explanation that spans multiple lines.
-   * @param {!OtherClass} obviousOtherClass
-   * @return {boolean} Whether something occurred.
-   */
-    
+    /**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
+
     handleChange = (selection) => {
-        // const selection = e.target.value
         this.props.changeSelection(selection)
     }
 
     render() {
         return (
-            <div className="drop-down-menu">
-                <div className="filter-results">
-                    Filter Results:
-                </div>
-                <select onChange={(e) => {this.handleChange(e.target.value)}}>
+            <div>
+                <h2 tabIndex="0" >
+                    Search Results:
+                </h2>
+                <label className="drop-down-menu" htmlFor="select-menu">Filter By Neighborhood:</label>
+                <select onChange={(e) => { this.handleChange(e.target.value) }}>
                     <option value="Select a">All Party Spots</option>
                     <option value="Buckhead">Buckhead</option>
                     <option value="Downtown">Downtown</option>
