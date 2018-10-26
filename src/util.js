@@ -50,22 +50,26 @@ export function createInitialMap(infoWin) {
     return map
 }
 
-export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
-    let resultNeighbrhd = ''
-    return nightSpotsArr.map(spot => {
-        let match = null
-        neighbrhdboundsArr.forEach(Neighbrhd => {
-            if (Neighbrhd.contains(new window.google.maps.LatLng(spot.lat, spot.lng))) {
-                return match = Neighbrhd
-            }
-        })
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {!MyClass} obj An object that for some reason needs detailed
+ *     explanation that spans multiple lines.
+ * @param {!OtherClass} obviousOtherClass
+ * @return {boolean} Whether something occurred.
+ */
 
+export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
+    // let resultNeighbrhd = ''
+    return nightSpotsArr.map(spot => {
+        let match = ''
+        neighbrhdboundsArr.forEach(Neighbrhd => {
+            if (Neighbrhd.contains(new window.google.maps.LatLng(spot.lat, spot.lng))) {match = Neighbrhd}
+        })
         let answer = ''
         switch (match) {
             case neighbrhdboundsArr[0]: answer = 'Buckhead'
                 break
-            case
-                neighbrhdboundsArr[1]: answer = 'Downtown'
+            case neighbrhdboundsArr[1]: answer = 'Downtown'
                 break
             case neighbrhdboundsArr[2]: answer = 'Little Five Points'
                 break
@@ -74,11 +78,9 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
             default:
                 answer = 'Not found'
         }
-        resultNeighbrhd = answer
-        spot.neighborhood = resultNeighbrhd
+        spot.neighborhood = answer
         return spot
     })
-
 }
 
 /**
@@ -224,42 +226,45 @@ export function createInfoWindow(google) {
 }
 export function createNeighborhoodBounds() {
     const buckheadBounds = new window.google.maps.LatLngBounds(
-        new window.google.maps.LatLng(-33.792269, -84.460429),
-        new window.google.maps.LatLng(33.887703, -84.339777)
+        new window.google.maps.LatLng(33.792169, -84.45991400000003),
+        new window.google.maps.LatLng(33.887608, -84.33972)
     )
     const downtownBounds = new window.google.maps.LatLngBounds(
-        new window.google.maps.LatLng(-33.942658, -84.406596),
-        new window.google.maps.LatLng(33.97138, -84.378626)
+        new window.google.maps.LatLng(33.742658, -84.406596),
+        new window.google.maps.LatLng(33.77138, -84.378626)
     )
     const litte5PtsBounds = new window.google.maps.LatLngBounds(
-        new window.google.maps.LatLng(-33.791912, -84.352697),
-        new window.google.maps.LatLng(33.797893, -84.348282)
+        new window.google.maps.LatLng(33.761912, -84.352697),
+        new window.google.maps.LatLng(33.767893, -84.348282)
     )
     const midtownBounds = new window.google.maps.LatLngBounds(
-        new window.google.maps.LatLng(-33.971228, -84.394419),
-        new window.google.maps.LatLng(34.002375, -84.364615)
+        new window.google.maps.LatLng(33.771228, -84.394419),
+        new window.google.maps.LatLng(33.802375, -84.364615)
     )
-
     return [buckheadBounds, downtownBounds, litte5PtsBounds, midtownBounds]
 }
 
 export function panToNeighborhoodBounds(selectedValue, boundsarr, map) {
     if (selectedValue === 'Buckhead') {
-        map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))
+        const center = map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))
         map.setZoom(12)
         map.panToBounds(boundsarr[0])
+        return [boundsarr[0], center]
     } else if (selectedValue === 'Downtown') {
         map.setZoom(12)
-        map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
+        const center = map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))
         map.panToBounds(boundsarr[1])
+        return [boundsarr[1], center]
     } else if (selectedValue === 'Little Five Points') {
         map.setZoom(12)
-        map.setCenter(new window.google.maps.LatLng(33.764387, -84.349604))
+        const center = map.setCenter(new window.google.maps.LatLng(33.764387, -84.349604))
         map.panToBounds(boundsarr[2])
+        return [boundsarr[2], center]
     } else if (selectedValue === 'Midtown') {
         map.setZoom(12)
-        map.setCenter(new window.google.maps.LatLng(33.783315, -84.383117))
+        const center = map.setCenter(new window.google.maps.LatLng(33.783315, -84.383117))
         map.panToBounds(boundsarr[3])
+        return [boundsarr[3], center]
     } else {
         map.setZoom(10)
         map.setCenter(new window.google.maps.LatLng(33.755711, -84.388372))

@@ -78,7 +78,7 @@ class App extends Component {
       this.setState({ currentlyShowing: this.nightSpots })
       this.allMarkers.forEach(marker => {
         marker.setVisible(true)
-        this.map.setZoom(10)
+        this.map.setZoom(9)
       })
     } else if (holder.length === 0) {
       this.allMarkers.forEach(marker => {
@@ -94,7 +94,6 @@ class App extends Component {
         })
       })
       this.setState({ currentlyShowing: holder })
-      console.log(this.allMarkers)
     }
   }
 
