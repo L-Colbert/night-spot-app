@@ -1,3 +1,5 @@
+import foursquare from './img/small-pink-foursquare-grey.png'
+
 /**
  * Operates on an instance of MyClass and returns something.
  * @param {!MyClass} obj An object that for some reason needs detailed
@@ -198,14 +200,15 @@ export function createMarkerArray(array, map, infoWin) {
             map.setZoom(12);
             map.setCenter(marker.getPosition());
 
-            const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
-                `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
+            // const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
+                // `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
+                // <div>${imgTag}
             const contentStr = `<div><strong> ${spot.name}</strong></div>
-            <div>${imgTag}
             <p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
             ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
             Hours: ${spot.hours ? spot.hours : "Hours unknown"}
-            Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p></div>`
+            Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p>
+            <img src=${foursquare} alt="attribution four square" ></img></div>`
             //TODO: Add attribution
             // To change the maximum width when changing content,
             // call close, setOptions, and then open.

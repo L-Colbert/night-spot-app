@@ -5,14 +5,18 @@ import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, cre
 import './css/App.css'
 import Sidebar from './components/Sidebar'
 
+/**
+* Operates on an instance of MyClass and returns something.
+* @param {!MyClass} obj An object that for some reason needs detailed
+*     explanation that spans multiple lines.
+* @param {!OtherClass} obviousOtherClass
+* @return {boolean} Whether something occurred.
+*/
 class App extends Component {
-  /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
- */
+  // static propTypes = {
+  //   books: PropTypes.array.isRequired,
+  //   onChangeShelf: PropTypes.func.isRequired
+  // }
 
   state = {
     // staticMap: [],
