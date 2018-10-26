@@ -16,16 +16,12 @@ class Sidebar extends Component {
     // static propTypes = {
     //     searchResults: PropTypes.array
     // }
-    state = {
-        detailsOpen: {}
-    }
 
     //inspiration from from Eddy Burgh
     //https://eddyerburgh.me/toggle-visibility-with-react
     toggleDiv(spot) {
         const { appState } = this.props
         const searchResults = appState.currentlyShowing
-        const currentlyOpen = this.state.detailsOpen
         const openInfoWindow = (spot) => {
             const match = this.props.allMarkers.find(marker => marker.key === spot.venueId)
             match.setAnimation(window.google.maps.Animation.BOUNCE)
@@ -45,8 +41,6 @@ class Sidebar extends Component {
             //show clicked list item's details
             if (spot.venueId === result.venueId) {
                 result.listDetailVisible = !result.listDetailVisible
-                currentlyOpen.listDetailVisible = false
-                this.setState({ detailsOpen: spot })
                 openInfoWindow(spot)
             }
         })
