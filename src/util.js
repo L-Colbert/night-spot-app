@@ -1,11 +1,17 @@
-import foursquare from './img/small-pink-foursquare-grey.png'
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @package
+ */
+
+ import foursquare from './img/small-pink-foursquare-grey.png'
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
@@ -26,11 +32,11 @@ export function load_google_maps() {
 }
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
 export function createInitialMap(infoWin) {
     const atl = { lat: 33.748995, lng: -84.387982 }
@@ -53,13 +59,12 @@ export function createInitialMap(infoWin) {
 }
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
-
 export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
     // let resultNeighbrhd = ''
     return nightSpotsArr.map(spot => {
@@ -69,13 +74,17 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
         })
         let answer = ''
         switch (match) {
-            case neighbrhdboundsArr[0]: answer = 'Buckhead'
+            case 
+                neighbrhdboundsArr[0]: answer = 'Buckhead'
                 break
-            case neighbrhdboundsArr[1]: answer = 'Downtown'
+            case 
+                neighbrhdboundsArr[1]: answer = 'Downtown'
                 break
-            case neighbrhdboundsArr[2]: answer = 'Little Five Points'
+            case 
+                neighbrhdboundsArr[2]: answer = 'Little Five Points'
                 break
-            case neighbrhdboundsArr[3]: answer = 'Midtown'
+            case 
+                neighbrhdboundsArr[3]: answer = 'Midtown'
                 break
             default:
                 answer = 'Not found'
@@ -86,13 +95,13 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
 }
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
-export function getNightSpots(neighbrhdboundsArr) {
+export function getNightSpots() {
 
     // let fourSqParams = [
     //   // `ll=33.748995,-84.387982`,
@@ -136,24 +145,23 @@ export function getNightSpots(neighbrhdboundsArr) {
 }
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
 export function getSpotDetails(spotsArray) {
     if (!spotsArray) {
         return null
     }
-    spotsArray.map(spot => {
+            spotsArray.map(spot => {
         // let DetailParams = [
         // 'id=' + spot.venueId,
         //     `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
         //     `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
         //     `v=20181003`
         // ].join('&')
-
         // let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
 
         // fetch(detailsUrl)
@@ -176,11 +184,11 @@ export function getSpotDetails(spotsArray) {
 }
 
 /**
- * Operates on an instance of MyClass and returns something.
- * @param {!MyClass} obj An object that for some reason needs detailed
- *     explanation that spans multiple lines.
- * @param {!OtherClass} obviousOtherClass
- * @return {boolean} Whether something occurred.
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
  */
 export function createMarkerArray(array, map, infoWin) {
     let bounds = new window.google.maps.LatLngBounds()
@@ -220,13 +228,28 @@ export function createMarkerArray(array, map, infoWin) {
     })
 }
 
-export function createInfoWindow(google) {
-    let infowindow = new google.maps.InfoWindow({
+/**
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
+ */
+export function createInfoWindow() {
+    let infowindow = new window.google.maps.InfoWindow({
         content: '',
         maxWidth: 300
     })
     return infowindow
 }
+
+/**
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
+ */
 export function createNeighborhoodBounds() {
     const buckheadBounds = new window.google.maps.LatLngBounds(
         new window.google.maps.LatLng(33.792169, -84.45991400000003),
@@ -247,6 +270,13 @@ export function createNeighborhoodBounds() {
     return [buckheadBounds, downtownBounds, litte5PtsBounds, midtownBounds]
 }
 
+/**
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
+ */
 export function panToNeighborhoodBounds(selectedValue, boundsarr, map) {
     if (selectedValue === 'Buckhead') {
         const center = map.setCenter(new window.google.maps.LatLng(33.837266, -84.406761))

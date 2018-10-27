@@ -1,22 +1,24 @@
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @package
+ */
+
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { load_google_maps, getNightSpots, createInitialMap } from './util'
 import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import Sidebar from './components/Sidebar'
+import ErrorHandling from './components/ErrorHandling'
 
-/**
-* Operates on an instance of MyClass and returns something.
-* @param {!MyClass} obj An object that for some reason needs detailed
-*     explanation that spans multiple lines.
-* @param {!OtherClass} obviousOtherClass
-* @return {boolean} Whether something occurred.
-*/
 class App extends Component {
-  // static propTypes = {
-  //   books: PropTypes.array.isRequired,
-  //   onChangeShelf: PropTypes.func.isRequired
-  // }
+  /**
+  * Operates on an instance of MyClass and returns something.
+  * @param {!MyClass} obj An object that for some reason needs detailed
+  *     explanation that spans multiple lines.
+  * @param {!OtherClass} obviousOtherClass
+  * @return {boolean} Whether something occurred.
+  */
 
   state = {
     // staticMap: [],
@@ -27,7 +29,16 @@ class App extends Component {
 
   // adapted from code graciously provided by Ryan Waite
   // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
+  /**
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
+ */
+
   componentDidMount() {
+
     const googleMapsPromise = load_google_maps()
     const APIdata = getNightSpots()
 
@@ -38,7 +49,7 @@ class App extends Component {
         this.neighborhoodBounds = createNeighborhoodBounds()
         this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
         const spotDetails = getSpotDetails(this.nightSpots)
-        this.infowindow = createInfoWindow(this.google)
+        this.infowindow = createInfoWindow()
         this.map = createInitialMap(this.infowindow)
         this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
         this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow /*, visibleMarkers: this.allMarkers*/ })
@@ -48,22 +59,22 @@ class App extends Component {
   }
 
   /**
-   * Operates on an instance of MyClass and returns something.
-   * @param {!MyClass} obj An object that for some reason needs detailed
-   *     explanation that spans multiple lines.
-   * @param {!OtherClass} obviousOtherClass
-   * @return {boolean} Whether something occurred.
+   * Demonstrates how top-level functions follow the same rules.  This one
+   * makes an array.
+   * @param {TYPE} arg
+   * @return {!Array<TYPE>}
+   * @template TYPE
    */
   individualStateUpdate = (key, value) => {
     this.setState({ key: value })
   }
 
   /**
-   * Operates on an instance of MyClass and returns something.
-   * @param {!MyClass} obj An object that for some reason needs detailed
-   *     explanation that spans multiple lines.
-   * @param {!OtherClass} obviousOtherClass
-   * @return {boolean} Whether something occurred.
+   * Demonstrates how top-level functions follow the same rules.  This one
+   * makes an array.
+   * @param {TYPE} arg
+   * @return {!Array<TYPE>}
+   * @template TYPE
    */
   changeSelection = (selectedValue) => {
     panToNeighborhoodBounds(selectedValue, this.neighborhoodBounds, this.map)
@@ -102,7 +113,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App" >
         <header role="banner" className="App-header">
@@ -116,16 +126,18 @@ class App extends Component {
             {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
             {/* <MapContainer /> */}
           </div>
-          <Sidebar
-            changeSelection={this.changeSelection}
-            individualStateUpdate={this.individualStateUpdate}
-            appState={this.state}
-            allMarkers={this.allMarkers}
-          />
+          <ErrorHandling>
+            <Sidebar
+              changeSelection={this.changeSelection}
+              individualStateUpdate={this.individualStateUpdate}
+              appState={this.state}
+              allMarkers={this.allMarkers}
+            />
+          </ErrorHandling>
         </main>
       </div>
     )
   }
 }
 
-export default App;
+export default App

@@ -1,18 +1,28 @@
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @package
+ */
+
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 const ListItem = (props) => {
-    // static propTypes = {
-    // }
-
+    /**
+     * Operates on an instance of MyClass and returns something.
+     * @param {!MyClass} obj An object that for some reason needs detailed
+     *     explanation that spans multiple lines.
+     * @param {!OtherClass} obviousOtherClass
+     * @return {boolean} Whether something occurred.
+     */
     const { spot } = props
-    
-    const imgTag = () => { 
+
+    const imgTag = () => {
         if (spot.bestPhoto && spot.bestPhoto.prefix) {
             const height = `height100`
-            const imgSrc =`${spot.bestPhoto.prefix}${height}${spot.bestPhoto.suffix}`
-            return <img src={imgSrc} alt={spot.name}></img>}
+            const imgSrc = `${spot.bestPhoto.prefix}${height}${spot.bestPhoto.suffix}`
+            return <img src={imgSrc} alt={spot.name} onerror="alert('An error occurred loading venue's photo.')"></img>
         }
+    }
 
     return (
         <div className="list-items">

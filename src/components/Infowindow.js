@@ -1,8 +1,18 @@
-import React from 'react'
-// import PropTypes from 'propTypes'
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @package
+ */
 
+ import React from 'react'
 
-//TODO: change to function
+/**
+ * Demonstrates how top-level functions follow the same rules.  This one
+ * makes an array.
+ * @param {TYPE} arg
+ * @return {!Array<TYPE>}
+ * @template TYPE
+ */
 function Infowindow(props) {
     const { selectedPlace } = this.props
     return (
