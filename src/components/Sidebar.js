@@ -73,7 +73,7 @@ class Sidebar extends Component {
                         <img src={foursquare} alt="attribution four square" ></img>
                         <ul>
                             {appState.currentlyShowing.map(spot => (
-                                <div key={spot.venueId} className="list-items">
+                                <li key={spot.venueId} className="list-items">
                                     <a href="#/" onClick={() => this.toggleDiv(spot)}>
                                         {spot.name ? spot.name : `Name unknown`}
                                     </a>
@@ -81,7 +81,7 @@ class Sidebar extends Component {
                                         spot.listDetailVisible && <ListItem
                                             spot={spot} />
                                     }
-                                </div>
+                                </li>
                             ))}
                         </ul>
                     </div >

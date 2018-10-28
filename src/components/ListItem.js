@@ -5,6 +5,8 @@
  */
 
 import React from 'react'
+import '../css/App.css'
+
 
 const ListItem = (props) => {
     /**
@@ -20,7 +22,7 @@ const ListItem = (props) => {
         if (spot.bestPhoto && spot.bestPhoto.prefix) {
             const height = `height100`
             const imgSrc = `${spot.bestPhoto.prefix}${height}${spot.bestPhoto.suffix}`
-            return <img src={imgSrc} alt={spot.name} onerror="alert('An error occurred loading venue's photo.')"></img>
+            return <img src={imgSrc} alt={spot.name} onError="alert('An error occurred loading venue's photo.')"></img>
         }
     }
 

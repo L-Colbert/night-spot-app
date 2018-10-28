@@ -6,6 +6,8 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import '../css/App.css'
+
 
 class DropDown extends Component {
     /**
@@ -26,10 +28,8 @@ class DropDown extends Component {
      * @template TYPE
      */
     handleChange = (e) => {
-        console.log(e)
         if (e.target.value) {
             try {
-                console.log(this.props.changeSelection)
                 if (this.props.changeSelection) {
                     this.props.changeSelection(e.target.value)
                 } else {
@@ -52,7 +52,7 @@ class DropDown extends Component {
                     Search Results:
                 </h2>
                 <label className="drop-down-menu" htmlFor="select-menu">Filter By Neighborhood:</label>
-                <select onChange={(e) => this.handleChange(e)} >
+                <select id="select-menu" onChange={(e) => this.handleChange(e)} >
                     <option value="Select a">All Party Spots</option>
                     <option value="Buckhead">Buckhead</option>
                     <option value="Downtown">Downtown</option>
