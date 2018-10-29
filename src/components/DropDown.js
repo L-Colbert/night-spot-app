@@ -37,7 +37,7 @@ class DropDown extends Component {
                 }
             } catch (error) {
                 document.querySelector("select").setAttribute("disabled", "")
-                document.querySelector(".filter").innerHTML="Filter currently unavailable"
+                document.querySelector(".filter-error").innerHTML="Filter currently unavailable"
                 document.querySelector("select").selectedIndex = 0
                 alert(error)
             }
@@ -47,9 +47,9 @@ class DropDown extends Component {
     render() {
 
         return (
-            <div>
+            <div className="filter">
                 <h2 tabIndex="0" >
-                    Search Results:
+                    Search Results
                 </h2>
                 <label className="drop-down-menu" htmlFor="select-menu">Filter By Neighborhood:</label>
                 <select id="select-menu" onChange={(e) => this.handleChange(e)} >
@@ -59,7 +59,7 @@ class DropDown extends Component {
                     <option value="Little Five Points">Little Five Points</option>
                     <option value="Midtown">Midtown</option>
                 </select>
-                <p className="filter"></p>
+                <p className="filter-error"></p>
             </div>
         )
     }

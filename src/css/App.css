@@ -8,16 +8,27 @@
 
 h1 {
   color: #e19dcc;
-  margin: 0;
 }
 
 h1, 
 h2 {
   text-align: center;
+  margin: 0;
 }
 
 ul {
-  padding: 9px
+  padding: 9px;
+  list-style: none
+}
+
+select {
+  font-family: inherit;
+  font-size: 100%;
+  border-radius: 6px;
+}
+
+#select-menu {
+  font-size: 75%;
 }
 
 /****** main content ******/
@@ -37,31 +48,55 @@ Code from Udacity Aria lessons
 main {
   text-align: left;
   width: 99%;
-  overflow-y: scroll;
-  visibility: visible;
   background-color: #e19dcc;
   font-size: calc(10px + 2vmin);
-  color: #322136;
   height: 87vh;
-  left: 0;
+  position: fixed
 }
 
 #map { 
-  height: 100%;
-  width: 100%;
     position: fixed;
     width: 99%;
     height: 40vh;
 }
 
 /****** sidebar ******/
+section {
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #fff;
+  width: 99%;
+}
+
+#sidebar {
+  height: 100%;
+}
+
+.filter {
+  position: fixed;
+  border-bottom: 1px solid #d9d9d9;
+  height: 64px;
+  border-top: 1px solid #d9d9d9;
+  width: 98%;
+}
+
+.results-container {
+  margin: 0;
+  padding-top: 66px;
+}
+
 #sidebar img {
-  padding-left: 12px;
+  padding-left: 1px;
+  height: auto;
+}
+
+.venue-photo {
+  height: 50%;
 }
 
 #sidebar h3 {
 text-align: left;
 padding-left: 12px;
+margin: 0;
 }
 
 .drop-down-menu
@@ -70,11 +105,26 @@ padding-left: 12px;
     width: 100%;
 }
 
+#sidebar ul {
+  position: relative;
+  overflow: scroll;
+  height: 165px;
+  margin: 0;
+}
+
 .list-items {
   -webkit-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   -moz-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
-  padding: 0px 0px 0 9px;
+  padding: 0 0 7px 9px;
+  margin-bottom: 7px;
+  border-radius: 10px;
+}
+
+.address {
+  font-size: 12px;
+  line-height: 0.4rem;
+  margin-top: 6px;
 }
 
 /****** footer ******/

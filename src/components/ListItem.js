@@ -27,12 +27,11 @@ const ListItem = (props) => {
     }
 
     return (
-        <div className="list-items">
+        <div>
             <div className="venue-photo">
-                {/* <img src={imgSrc(spot)} alt={spot.name}></img> */}
                 {imgTag()}
             </div>
-            <div>
+            <div className="address">
                 {`${spot.location ? spot.location.formattedAddress[0] : `Address: Not found address`}
                 ${spot.location ? spot.location.formattedAddress[1] : ``}`}
                 <p>Rating: {spot.rating ? spot.rating : `rating : Unpublished rating`}</p>

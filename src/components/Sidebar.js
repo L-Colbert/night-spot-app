@@ -1,7 +1,7 @@
 /**
- * @fileoverview Description of file, its uses and information
- * about its dependencies.
- * @package
+ * Creates a sidebar that contains a 
+ * dropdown menu used to filter
+ * results via a dropdown menu
  */
 
 import React, { Component } from 'react';
@@ -58,18 +58,19 @@ class Sidebar extends Component {
                 })
                 this.props.individualStateUpdate('currentlyShowing', searchResults)
             }
-            catch(error) {
+            catch (error) {
                 throw new Error('List is currently unavailable')
             }
         }
     }
 
-        render() {
-            const { appState } = this.props
-            return (
-                <section>
-                    <div role="search" id="sidebar">
-                        <DropDown changeSelection={this.props.changeSelection} />
+    render() {
+        const { appState } = this.props
+        return (
+            <section>
+                <div role="search" id="sidebar">
+                    <DropDown changeSelection={this.props.changeSelection} />
+                    <div className="results-container">
                         <img src={foursquare} alt="attribution four square" ></img>
                         <ul>
                             {appState.currentlyShowing.map(spot => (
@@ -84,10 +85,11 @@ class Sidebar extends Component {
                                 </li>
                             ))}
                         </ul>
-                    </div >
-                </section>
-            )
-        }
+                    </div>
+                </div >
+            </section>
+        )
     }
+}
 
-    export default Sidebar
+export default Sidebar

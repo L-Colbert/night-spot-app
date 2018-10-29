@@ -1,7 +1,6 @@
 /**
- * @fileoverview Description of file, its uses and information
- * about its dependencies.
- * @package
+ * @fileoverview Main application file
+ * containing the map and sidebar component
  */
 
 import React, { Component } from 'react'
@@ -12,14 +11,6 @@ import Sidebar from './components/Sidebar'
 import ErrorHandling from './components/ErrorHandling'
 
 class App extends Component {
-  /**
-  * Operates on an instance of MyClass and returns something.
-  * @param {!MyClass} obj An object that for some reason needs detailed
-  *     explanation that spans multiple lines.
-  * @param {!OtherClass} obviousOtherClass
-  * @return {boolean} Whether something occurred.
-  */
-
   state = {
     // staticMap: [],
     currentlyShowing: [],
@@ -30,13 +21,12 @@ class App extends Component {
   // adapted from code graciously provided by Ryan Waite
   // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
   /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
+ * Before commponent is mounted, load google maps and 
+ * optain third party data
  * @param {TYPE} arg
  * @return {!Array<TYPE>}
  * @template TYPE
  */
-
   componentDidMount() {
 
     const googleMapsPromise = load_google_maps()
@@ -59,22 +49,16 @@ class App extends Component {
   }
 
   /**
-   * Demonstrates how top-level functions follow the same rules.  This one
-   * makes an array.
-   * @param {TYPE} arg
-   * @return {!Array<TYPE>}
-   * @template TYPE
+  * Used to update state 
    */
   individualStateUpdate = (key, value) => {
     this.setState({ key: value })
   }
 
   /**
-   * Demonstrates how top-level functions follow the same rules.  This one
-   * makes an array.
-   * @param {TYPE} arg
-   * @return {!Array<TYPE>}
-   * @template TYPE
+   * Takes a user inputed neighborhood 
+   * and filters the map markers and results list, 
+   * then updates currentlyShowwing in state
    */
   changeSelection = (selectedValue) => {
     panToNeighborhoodBounds(selectedValue, this.neighborhoodBounds, this.map)
