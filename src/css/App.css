@@ -1,19 +1,32 @@
+body {
+  max-width: 99%;
+  margin: auto;
+}
+
 /****** header ******/
 .App-header {
-  height: 65px;
+  height: 69px;
   z-index: 1001;
-  width: 99%;
-  background-color: #322136
+  background-color: #a1c3d1
 }
 
 h1 {
-  color: #e19dcc;
+  color: white;
+  padding-top: 10px;
 }
 
 h1, 
 h2 {
   text-align: center;
   margin: 0;
+  text-transform: uppercase;
+}
+
+hr {
+  background: #D0D7D9;
+  height: 1px;
+  margin: 20px 0 20px 0;
+  border: none;
 }
 
 ul {
@@ -24,7 +37,8 @@ ul {
 select {
   font-family: inherit;
   font-size: 100%;
-  border-radius: 6px;
+  border-radius: 4px;
+  margin-left: 5px;
 }
 
 #select-menu {
@@ -48,27 +62,53 @@ Code from Udacity Aria lessons
 main {
   text-align: left;
   width: 99%;
-  background-color: #e19dcc;
+  background-color: #f0ebf4;
   font-size: calc(10px + 2vmin);
-  height: 87vh;
-  position: fixed
+  height: 88vh;
+  position: fixed;
+  max-width: 99%;
+  margin: auto;
 }
 
 #map { 
     position: fixed;
     width: 99%;
-    height: 40vh;
+    height: 36vh;
+}
+
+.gm-style .gm-style-iw {
+  white-space: pre-line;
+  color: #322136;
+  font-weight: normal;
+}
+
+.gm-style img {
+  height: auto;
+  width: 86px;
 }
 
 /****** sidebar ******/
+section h2 {
+      color: #322136;
+
+}
 section {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   width: 99%;
+  border-bottom: 1px solid #d9d9d9;
+  height: 52vh;
 }
 
 #sidebar {
   height: 100%;
+}
+
+#sidebar .hours {
+height: auto;
+overflow: hidden;
+letter-spacing: 0.3px;
+padding-bottom: 5px;
 }
 
 .filter {
@@ -77,54 +117,103 @@ section {
   height: 64px;
   border-top: 1px solid #d9d9d9;
   width: 98%;
+  text-align: center;
+  color: #322136;
 }
 
 .results-container {
   margin: 0;
-  padding-top: 66px;
-}
-
-#sidebar img {
-  padding-left: 1px;
-  height: auto;
+  padding-top: 67px;
+  height: 100%
 }
 
 .venue-photo {
-  height: 50%;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
 }
 
+
 #sidebar h3 {
-text-align: left;
-padding-left: 12px;
-margin: 0;
+  text-align: left;
+  padding-left: 12px;
+  margin: 0;
+}
+
+.attr-container {
+  text-align: right;
+  padding-right: 9px;
+}
+
+.attr {
+  height: auto;
+  width: 152px;
 }
 
 .drop-down-menu
   {
   text-align: left;
-    width: 100%;
+  color: #322136;
+  width: 100%;
 }
 
 #sidebar ul {
   position: relative;
   overflow: scroll;
-  height: 165px;
+  height: 195px;
   margin: 0;
+  padding-bottom: 0;
+
 }
 
 .list-items {
   -webkit-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   -moz-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
-  padding: 0 0 7px 9px;
+  padding: 0 0 7px 0px;
   margin-bottom: 7px;
-  border-radius: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+li a {
+  padding-left: 2px;
+}
+
+.more-details {
+  background-color: #4c3f54;
+  border-bottom: 0 solid #eee;
+  color: #fff;
+  display: inline-block;
+  font-size: 3vw;
+  margin: 0;
+  margin-top: 3px;
+  padding: 5px 6px 4px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .address {
-  font-size: 12px;
-  line-height: 0.4rem;
+  font-size: 16px;
+  line-height: 1rem;
   margin-top: 6px;
-}
+  padding-left: 6px;
+  white-space: pre-line;
+  }
 
+  .hours-list,
+  .rating {
+    line-height: 1.1em;
+    font-size: 14px;
+  }
+
+  .rating {
+    margin: 4px 2px 5px;
+  }
+
+  .rating span {
+    color: #a61e65
+  }
 /****** footer ******/

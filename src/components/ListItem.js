@@ -22,7 +22,7 @@ const ListItem = (props) => {
         if (spot.bestPhoto && spot.bestPhoto.prefix) {
             const height = `height100`
             const imgSrc = `${spot.bestPhoto.prefix}${height}${spot.bestPhoto.suffix}`
-            return <img src={imgSrc} alt={spot.name} onError="alert('An error occurred loading venue's photo.')"></img>
+            return <img className="venue-photo" src={imgSrc} alt={spot.name}></img>
         }
     }
 
@@ -34,9 +34,18 @@ const ListItem = (props) => {
             <div className="address">
                 {`${spot.location ? spot.location.formattedAddress[0] : `Address: Not found address`}
                 ${spot.location ? spot.location.formattedAddress[1] : ``}`}
-                <p>Rating: {spot.rating ? spot.rating : `rating : Unpublished rating`}</p>
             </div>
-            <a rel="noopener noreferrer" href={`${spot.canonicalUrl ? spot.canonicalUrl : ``}`} target="_blank">More Details</a>
+            <ul className="hours">
+                {(spot.popular && spot.popular.timeframes) ?
+                spot.popular.timeframes.map(day => (
+                    <li key={day.days} className="hours-list">
+                        {day.days} : {day.open[0].renderedTime}
+                    </li>
+                ))
+                : ``}
+            </ul>
+            <p className="rating">Rating: <span><strong>{spot.rating ? spot.rating : `Unpublished rating`}</strong></span></p>
+            <a className="more-details" rel="noopener noreferrer" href={`${spot.canonicalUrl ? spot.canonicalUrl : ``}`} target="_blank">More Details</a>
         </div>
     )
 }

@@ -4,7 +4,7 @@
  * @package
  */
 
- import foursquare from './img/small-pink-foursquare-grey.png'
+import foursquare from './img/small-pink-foursquare-grey.png'
 
 /**
  * Demonstrates how top-level functions follow the same rules.  This one
@@ -40,9 +40,99 @@ export function load_google_maps() {
  */
 export function createInitialMap(infoWin) {
     const atl = { lat: 33.748995, lng: -84.387982 }
+    const styles = [
+        {
+            "featureType": "administrative.land_parcel",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.neighborhood",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#8080c0"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "labels.text",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.business",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "labels.text",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#8080c0"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#8080c0"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "labels.text",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        }
+    ]
     const map = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: atl
+        center: atl,
+        styles: styles
     })
     //closes infowindow when map is clicked and zooms
     window.google.maps.event.addListener(map, 'click', () => {
@@ -70,20 +160,20 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
     return nightSpotsArr.map(spot => {
         let match = ''
         neighbrhdboundsArr.forEach(Neighbrhd => {
-            if (Neighbrhd.contains(new window.google.maps.LatLng(spot.lat, spot.lng))) {match = Neighbrhd}
+            if (Neighbrhd.contains(new window.google.maps.LatLng(spot.lat, spot.lng))) { match = Neighbrhd }
         })
         let answer = ''
         switch (match) {
-            case 
+            case
                 neighbrhdboundsArr[0]: answer = 'Buckhead'
                 break
-            case 
+            case
                 neighbrhdboundsArr[1]: answer = 'Downtown'
                 break
-            case 
+            case
                 neighbrhdboundsArr[2]: answer = 'Little Five Points'
                 break
-            case 
+            case
                 neighbrhdboundsArr[3]: answer = 'Midtown'
                 break
             default:
@@ -155,7 +245,7 @@ export function getSpotDetails(spotsArray) {
     if (!spotsArray) {
         return null
     }
-            spotsArray.map(spot => {
+    spotsArray.map(spot => {
         // let DetailParams = [
         // 'id=' + spot.venueId,
         //     `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
@@ -195,6 +285,9 @@ export function createMarkerArray(array, map, infoWin) {
     return array.map(spot => {
         let marker = new window.google.maps.Marker({
             key: spot.venueId,
+            icon: {
+                url: "http://maps.google.com/mapfiles/ms/icons/lightblue.png"
+            },
             map: map,
             position: { lat: spot.lat, lng: spot.lng },
             title: spot.name,
@@ -209,15 +302,14 @@ export function createMarkerArray(array, map, infoWin) {
             map.setCenter(marker.getPosition());
 
             // const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
-                // `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
-                // <div>${imgTag}
-            const contentStr = `<div><strong> ${spot.name}</strong></div>
-            <p> ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ? spot.location.formattedAddress[0] : ""}
-            ${spot.address && spot.address[0] && spot.address[0].formattedAddress[0] ? spot.address[0].formattedAddress[1] : ""}
-            Hours: ${spot.hours ? spot.hours : "Hours unknown"}
-            Rating: ${spot.rating ? spot.rating : "Rating Unknown"}</p>
+            // `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
+            // <div>${imgTag}
+            const contentStr = `<div className="venue-name"><strong> ${spot.name}</strong></div>
+            ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ?
+                    spot.location.formattedAddress[0] : "Adddress Not Available"}
+            ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[1] ?
+                    spot.location.formattedAddress[1] : ""}
             <img src=${foursquare} alt="attribution four square" ></img></div>`
-            //TODO: Add attribution
             // To change the maximum width when changing content,
             // call close, setOptions, and then open.
             infoWin.setContent(contentStr)

@@ -71,8 +71,10 @@ class Sidebar extends Component {
                 <div role="search" id="sidebar">
                     <DropDown changeSelection={this.props.changeSelection} />
                     <div className="results-container">
-                        <img src={foursquare} alt="attribution four square" ></img>
-                        <ul>
+                    <div className="attr-container">
+                        <img className="attr" src={foursquare} alt="attribution four square" ></img>
+                    </div>
+                        <ul>    
                             {appState.currentlyShowing.map(spot => (
                                 <li key={spot.venueId} className="list-items">
                                     <a href="#/" onClick={() => this.toggleDiv(spot)}>
