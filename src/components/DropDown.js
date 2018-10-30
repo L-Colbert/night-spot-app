@@ -48,9 +48,9 @@ class DropDown extends Component {
 
         return (
             <div className="filter">
-                <h2 tabIndex="0" >
+                <h3 tabIndex="0" >
                     Search Results
-                </h2>
+                </h3>
                 <label className="drop-down-menu" htmlFor="select-menu">Filter By Neighborhood:</label>
                 <select id="select-menu" onChange={(e) => this.handleChange(e)} >
                     <option value="Select a">All Party Spots</option>

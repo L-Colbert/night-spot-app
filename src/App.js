@@ -9,6 +9,8 @@ import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, cre
 import './css/App.css'
 import Sidebar from './components/Sidebar'
 import ErrorHandling from './components/ErrorHandling'
+import Footer from './components/Footer'
+import party from './img/party.jpg'
 
 class App extends Component {
   state = {
@@ -101,7 +103,7 @@ class App extends Component {
       <div className="App" >
         <header role="banner" className="App-header">
           <h1 tabIndex="0">
-            Party On!
+            Party On
           </h1>
         </header>
         <a href="#sidebar" className="skip-link">Skip to night club search</a>
@@ -122,6 +124,7 @@ class App extends Component {
             />
           </ErrorHandling>
         </main>
+        <Footer />
       </div>
     )
   }

@@ -38,9 +38,9 @@ const ListItem = (props) => {
             <ul className="hours">
                 {(spot.popular && spot.popular.timeframes) ?
                 spot.popular.timeframes.map(day => (
-                    <li key={day.days} className="hours-list">
-                        {day.days} : {day.open[0].renderedTime}
-                    </li>
+                    <tr key={day.days} className="hours-list">
+                        <td>{day.days}</td><td>{day.open[0].renderedTime}</td>
+                    </tr>
                 ))
                 : ``}
             </ul>

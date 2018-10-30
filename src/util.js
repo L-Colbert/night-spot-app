@@ -50,14 +50,6 @@ export function createInitialMap(infoWin) {
             ]
         },
         {
-            "featureType": "administrative.neighborhood",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
             "featureType": "landscape.natural.landcover",
             "elementType": "geometry.fill",
             "stylers": [
