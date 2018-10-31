@@ -13,7 +13,6 @@ const Footer = () => {
             Copyright (c) 2018 <strong>Party On</strong> All Rights Reserved.
         </footer>
     )
-
 }
 
 export default Footer

@@ -10,11 +10,8 @@ import '../css/App.css'
 
 const ListItem = (props) => {
     /**
-     * Operates on an instance of MyClass and returns something.
-     * @param {!MyClass} obj An object that for some reason needs detailed
-     *     explanation that spans multiple lines.
-     * @param {!OtherClass} obviousOtherClass
-     * @return {boolean} Whether something occurred.
+     * Retnders the unordered list of venues
+     * and venue info including address and hours open
      */
     const { spot } = props
 

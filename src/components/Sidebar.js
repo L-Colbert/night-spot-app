@@ -12,14 +12,6 @@ import foursquare from '../img/small-pink-foursquare-grey.png'
 import PropTypes from 'prop-types'
 
 class Sidebar extends Component {
-    /**
-     * Operates on an instance of MyClass and returns something.
-     * @param {!MyClass} obj An object that for some reason needs detailed
-     *     explanation that spans multiple lines.
-     * @param {!OtherClass} obviousOtherClass
-     * @return {boolean} Whether something occurred.
-     */
-
     static propTypes = {
         appState: PropTypes.object.isRequired,
         allMarkers: PropTypes.array,
@@ -27,36 +19,45 @@ class Sidebar extends Component {
         changeSelection: PropTypes.func.isRequired
     }
 
+    state = {
+        currentlyOpen: {}
+    }
+
+
+
+
     //inspiration from from Eddy Burgh
     //https://eddyerburgh.me/toggle-visibility-with-react
     toggleDiv(spot) {
         if (spot) {
             try {
-                const { appState } = this.props
-                const searchResults = appState.currentlyShowing
-                const openInfoWindow = (spot) => {
-                    const match = this.props.allMarkers.find(marker => marker.key === spot.venueId)
-                    match.setAnimation(window.google.maps.Animation.BOUNCE)
-                    setTimeout(() => {
-                        match.setAnimation(window.google.maps.Animation.null)
-                    }, 1000)
-                    window.google.maps.event.trigger(match, 'click')
+            const { appState } = this.props
+            const searchResults = appState.currentlyShowing
+            const openInfoWindow = (spot) => {
+                const match = this.props.allMarkers.find(marker => marker.key === spot.venueId)
+                match.setAnimation(window.google.maps.Animation.BOUNCE)
+                setTimeout(() => {
+                    match.setAnimation(window.google.maps.Animation.null)
+                }, 1000)
+                window.google.maps.event.trigger(match, 'click')
+            }
+
+            appState.onlyInfoWin.close()
+
+            searchResults.forEach(result => {
+                //close the info window, and return
+                if (result.listDetailVisible) {
+                    result.listDetailVisible = !result.listDetailVisible
+                    return
                 }
-                searchResults.forEach(result => {
-                    //if list details are visible, close it,
-                    //close the info window, and return
-                    if (result.listDetailVisible) {
-                        result.listDetailVisible = !result.listDetailVisible
-                        appState.onlyInfoWin.close()
-                        return
-                    }
-                    //show clicked list item's details
-                    if (spot.venueId === result.venueId) {
-                        result.listDetailVisible = !result.listDetailVisible
-                        openInfoWindow(spot)
-                    }
-                })
+                //show clicked list item's details
+                if (spot.venueId === result.venueId) {
+                    result.listDetailVisible = !result.listDetailVisible
+                    appState.onlyInfoWin.close()
+                    openInfoWindow(spot)
+                }
                 this.props.individualStateUpdate('currentlyShowing', searchResults)
+            })
             }
             catch (error) {
                 throw new Error('List is currently unavailable')

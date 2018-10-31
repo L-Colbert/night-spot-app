@@ -1,18 +1,5 @@
-/**
- * @fileoverview Description of file, its uses and information
- * about its dependencies.
- * @package
- */
-
 import foursquare from './img/small-pink-foursquare-grey.png'
 
-/**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
- */
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
         // define the global callback that will run when google maps is loaded
@@ -31,13 +18,6 @@ export function load_google_maps() {
     })
 }
 
-/**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
- */
 export function createInitialMap(infoWin) {
     const atl = { lat: 33.748995, lng: -84.387982 }
     const styles = [
@@ -141,11 +121,9 @@ export function createInitialMap(infoWin) {
 }
 
 /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
+ * If venues object received from the third-party API
+ * does not contain a neighborhood property, assign one to the 
+ * object based on it's lat and lng
  */
 export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
     // let resultNeighbrhd = ''
@@ -177,11 +155,9 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
 }
 
 /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
+ * Gets initial data from Foursquare and returns 
+ * in an array. File response.json contains a sample
+ * request of five venues, used for testing purposes
  */
 export function getNightSpots() {
 
@@ -227,11 +203,9 @@ export function getNightSpots() {
 }
 
 /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
+ * Fetches detailed infomation about each venue, pushes that infomation
+ * to an array and returns that array. File /details.json contains such 
+ * information from one venue, used for testing purposes
  */
 export function getSpotDetails(spotsArray) {
     if (!spotsArray) {
@@ -265,13 +239,6 @@ export function getSpotDetails(spotsArray) {
     return spotsArray
 }
 
-/**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
- */
 export function createMarkerArray(array, map, infoWin) {
     let bounds = new window.google.maps.LatLngBounds()
     return array.map(spot => {
@@ -302,8 +269,6 @@ export function createMarkerArray(array, map, infoWin) {
             ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[1] ?
                     spot.location.formattedAddress[1] : ""}
             <img src=${foursquare} alt="attribution four square" ></img></div>`
-            // To change the maximum width when changing content,
-            // call close, setOptions, and then open.
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
         })
@@ -312,13 +277,7 @@ export function createMarkerArray(array, map, infoWin) {
     })
 }
 
-/**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
- */
+
 export function createInfoWindow() {
     let infowindow = new window.google.maps.InfoWindow({
         content: '',
@@ -328,11 +287,9 @@ export function createInfoWindow() {
 }
 
 /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
+ * Creaates new bounds for each neighborhood defined.  This is used 
+ * to assign neighborhoods to the third-party data and also to pan
+ * the map when filtering
  */
 export function createNeighborhoodBounds() {
     const buckheadBounds = new window.google.maps.LatLngBounds(
@@ -355,11 +312,7 @@ export function createNeighborhoodBounds() {
 }
 
 /**
- * Demonstrates how top-level functions follow the same rules.  This one
- * makes an array.
- * @param {TYPE} arg
- * @return {!Array<TYPE>}
- * @template TYPE
+ * Uses an array of bounds which contains LatLngBounds to center, zoom, and panTo
  */
 export function panToNeighborhoodBounds(selectedValue, boundsarr, map) {
     if (selectedValue === 'Buckhead') {

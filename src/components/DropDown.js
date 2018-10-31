@@ -1,9 +1,3 @@
-/**
- * @fileoverview Description of file, its uses and information
- * about its dependencies.
- * @package
- */
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../css/App.css'
@@ -11,21 +5,14 @@ import '../css/App.css'
 
 class DropDown extends Component {
     /**
-    * Operates on an instance of MyClass and returns something.
-    * @param {!MyClass} obj An object that for some reason needs detailed
-    *     explanation that spans multiple lines.
-    * @param {!OtherClass} obviousOtherClass
-    * @return {boolean} Whether something occurred.
+     *  Renders the drop down menu
     */
     static propTypes = {
         changeSelection: PropTypes.func.isRequired
     }
     /**
-     * Demonstrates how top-level functions follow the same rules.  This one
-     * makes an array.
-     * @param {TYPE} arg
-     * @return {!Array<TYPE>}
-     * @template TYPE
+     * Function using input via input form and 
+     * filters result list of venues
      */
     handleChange = (e) => {
         if (e.target.value) {

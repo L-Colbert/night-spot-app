@@ -1,6 +1,6 @@
 /**
  * @fileoverview Main application file
- * containing the map and sidebar component
+ * containing the map and sidebar components
  */
 
 import React, { Component } from 'react'
@@ -10,7 +10,6 @@ import './css/App.css'
 import Sidebar from './components/Sidebar'
 import ErrorHandling from './components/ErrorHandling'
 import Footer from './components/Footer'
-import party from './img/party.jpg'
 
 class App extends Component {
   state = {
@@ -59,8 +58,8 @@ class App extends Component {
 
   /**
    * Takes a user inputed neighborhood 
-   * and filters the map markers and results list, 
-   * then updates currentlyShowwing in state
+   * and filters the map markers and search results, 
+   * then updates array of venues, currentlyShowwing in state
    */
   changeSelection = (selectedValue) => {
     panToNeighborhoodBounds(selectedValue, this.neighborhoodBounds, this.map)
@@ -102,7 +101,7 @@ class App extends Component {
     return (
       <div className="App" >
         <header role="banner" className="App-header">
-          {/* TODO: Photographer:	Trinity Kubassek
+          {/* Header background, photographer:	Trinity Kubassek
         https://stocksnap.io/photo/54M8Z4V4JG */}
           <h1 tabIndex="0">
             Party On
@@ -125,6 +124,7 @@ class App extends Component {
               individualStateUpdate={this.individualStateUpdate}
               appState={this.state}
               allMarkers={this.allMarkers}
+              map={this.map}
             />
           </ErrorHandling>
         </main>
