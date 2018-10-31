@@ -1,18 +1,22 @@
-body,
-td {
-  max-width: 99%;
-  margin: auto;
+/* html, */
+body {
+  max-width: 98%;
+  /* margin: auto; */
+  height: 100%;
 }
 
-tr {
-  padding-right: 11px;
+#root {
+  width: 98%;
+  margin: auto;
 }
 
 /****** header ******/
   .App-header {
-    height: 85px;
+    height: 11vh;
+    width: 98%;
+    position: fixed;
     z-index: 1001;
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 5px solid #4c3f54;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,10 +38,11 @@ h3 {
 }
 
 hr {
-  background: #D0D7D9;
+  background: #427e8f;
   height: 1px;
-  margin: 20px 0 20px 0;
+  margin: 0;
   border: none;
+  width: 100%;
 }
 
 ul {
@@ -45,9 +50,13 @@ ul {
   list-style: none
 }
 
+/* .list-items-container {i
+
+} */
+
 select {
   font-family: inherit;
-  font-size: 100%;
+  /* font-size: 100%; */
   border-radius: 4px;
   margin-left: 5px;
 }
@@ -71,21 +80,26 @@ Code from Udacity Aria lessons
 }
 
 main {
-  text-align: left;
-  width: 99%;
-  background-color: #f0ebf4;
-  font-size: calc(10px + 2vmin);
-  height: 85vh;
+  border-top: 1px solid #d9d9d9;
+  height: 87vh;
   position: fixed;
-  max-width: 99%;
-  margin: auto;
-  border-top: 3px solid #fff;
+  width: 98%;
+  margin: 0;
+  top: 11%;
+}
+
+#map-container {
+  border-top: 1px solid #d9d9d9;
+  height: 36%;
+  position: fixed;
+  width: 98%;
+  margin: 0;
+  top: 12%;
 }
 
 #map { 
-    position: fixed;
-    width: 99%;
-    height: 36vh;
+  width: 100%;
+  height: 100%;
 }
 
 .gm-style .gm-style-iw {
@@ -96,7 +110,7 @@ main {
 
 .gm-style img {
   height: auto;
-  width: 86px;
+  width: 134px;
 }
 
 /****** sidebar ******/
@@ -105,11 +119,13 @@ section h2 {
 
 }
 section {
-  border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  width: 99%;
+  width: 98%;
   border-bottom: 1px solid #d9d9d9;
-  height: 46vh;
+  height: 49%;
+  position: fixed;
+  top: 48%;
+  background-color: #f0f1f1;
 }
 
 #sidebar {
@@ -126,7 +142,7 @@ padding-bottom: 5px;
 .filter {
   position: fixed;
   border-bottom: 1px solid #d9d9d9;
-  height: 64px;
+  height: 59px;
   border-top: 1px solid #d9d9d9;
   width: 98%;
   text-align: center;
@@ -136,8 +152,8 @@ padding-bottom: 5px;
 
 .results-container {
   margin: 0;
-  padding-top: 67px;
-  height: 73%
+  padding-top: 61px;
+  height: 79%;
 }
 
 .venue-photo {
@@ -146,12 +162,6 @@ padding-bottom: 5px;
   display: block;
   margin: 0;
 }
-
-/* #sidebar h3 {
-  text-align: left;
-  padding-left: 12px;
-  margin: 0;
-} */
 
 .attr-container {
   text-align: right;
@@ -171,26 +181,30 @@ padding-bottom: 5px;
 }
 
 #sidebar ul {
-  position: relative;
-  overflow: scroll;
-  height: 160px;
+  position: absolute;
+  overflow: auto;
+  height: 100%;
   margin: 0;
   padding-bottom: 0;
+  width: 96%;
 
 }
 
 .list-items {
-  -webkit-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
-  -moz-box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
   box-shadow: 2px -1px 10px 0px rgba(0,0,0,0.23);
-  padding: 0 0 7px 0px;
+  padding: 1px 0 3px 0px;
   margin-bottom: 7px;
-  border-radius: 4px;
-  background-color: white;
+  border-radius: 5px;
+  /* background-color: #f0f1f1; */
 }
 
 li a {
-  padding-left: 2px;
+  padding-left: 6px;
+  font-size: 14px;
+}
+
+td {
+  padding-right: 11px;
 }
 
 .more-details {
@@ -198,7 +212,7 @@ li a {
   border-bottom: 0 solid #eee;
   color: #fff;
   display: inline-block;
-  font-size: 3vw;
+  font-size: 12px;
   margin: 0;
   margin-top: 3px;
   padding: 5px 6px 4px;
@@ -212,7 +226,6 @@ li a {
   line-height: 1rem;
   margin-top: 6px;
   padding-left: 6px;
-  white-space: pre-line;
   }
 
   .hours-list,
@@ -229,74 +242,137 @@ li a {
     color: #a61e65
   }
 /****** footer ******/
-#footer {
+footer {
   background-color: #353a49d4;
-    color: #DEDEDE;
-    font-size: 8pt;
-    letter-spacing: 1px;
-    padding: 0px 0;
-    text-align: center;
-    text-transform: uppercase;
-    bottom: -3px;
-    position: absolute;
-    width: 100%;
-    height: 17px;
+  color: #DEDEDE;
+  font-size: 8pt;
+  letter-spacing: 1px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  bottom: 0px;
+  position: fixed;
+  width: 98%;
+  height: 17px;
 }
 
-/****** media queries ******/
-/* @media screen and (min-width: 414px) {
-#sidebar ul {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.list-items {
-    width: 41%;
-    height: auto;
-  }
-} */
-
+/****** Responsiveness ******/
 @media screen and (min-width: 475px) {
   main {
     border-top: 4px solid #fff;
     /* border-bottom: 1px solid #d9d9d9; */
+    height: 76vh;
+    top: 113px;
+    width: 100%
   }
 
   .App-header {
-    height: 87px;
-}
+    height: 19vh;
+    width: 100%
+  }
 
+  h1 {
+    font-size: 9vw;
+  }
+
+  #map-container {
+    border-top: 1px solid #d9d9d9;
+    background: #eee none repeat scroll 0 0;
+    height: 78%;
+    position: fixed;
+    right: 0px;
+    width: 50%;
+    margin: 0;
+    top: 19%;
+    left: 50%;
+  }
+  
   #map {
     border-top: 1px solid #d9d9d9;
-      background: #eee none repeat scroll 0 0;
-      height: 100%;
-      position: absolute;
-      right: 0;
-      width: 50%;
-      margin: 0;
+    background: #eee none repeat scroll 0 0;
+    height: 100%;
+    right: 0px;
+    width: 100%;
+    margin: 0;
   }
 
   section {
     width: 50%;
     border-top: none;
-    height: 84vh;
+    height: 78%;
+    top: 19%;
   }
 
   .filter {
     width: 50%;
-    height: 111px;
+    height: 39px;
+    padding: 10px 0px 33px 0;
+
   }
 
   #sidebar {
     border-right: 2px solid #d9d9d9;
+    width: 100%;
   }
 
   .results-container {
-    padding-top: 109px;
+    padding-top: 84px;
   }
 
-  #sidebar ul {
-    height: 360px;
+  footer {
+    width: 100%
+  }
+
+  #root {
+    width: 100%
   }
 }
 
+  @media screen and (min-width: 768px) {
+    section {
+    width: 44%;
+    border: 36  px solid #f0f1f1;
+    }
+
+    #sidebar {
+      border: 2px solid #d9d9d9;
+    }  
+
+    .filter {
+      width: 44%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    section {
+      width: 40%;
+      border: 50px solid #f0f1f1;
+    }
+
+    .filter {
+      width: 40%;
+      padding-top: 7px;
+      padding-bottom: 36px;
+    }
+    
+    section h3 {
+      padding-bottom: 3px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+  #map-container {
+  width: 56%;
+  left: 45%;
+  }
+
+  section {
+    width: 29%;
+    border-right: 204px solid #f0f1f1;
+    border-left: 203px solid #f0f1f1;
+  }
+
+  .filter {
+    width: 29%
+  }
+}

@@ -102,18 +102,22 @@ class App extends Component {
     return (
       <div className="App" >
         <header role="banner" className="App-header">
+          {/* TODO: Photographer:	Trinity Kubassek
+        https://stocksnap.io/photo/54M8Z4V4JG */}
           <h1 tabIndex="0">
             Party On
           </h1>
         </header>
         <a href="#sidebar" className="skip-link">Skip to night club search</a>
         <main>
-          <div
-            id="map"
-            tabIndex="-1"
-            role="application"
-            aria-label="location">
-            {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
+          <div id="map-container">
+            <div
+              id="map"
+              tabIndex="-1"
+              role="application"
+              aria-label="location">
+              {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
+            </div>
           </div>
           <ErrorHandling>
             <Sidebar

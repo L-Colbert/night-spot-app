@@ -71,22 +71,25 @@ class Sidebar extends Component {
                 <div role="search" id="sidebar">
                     <DropDown changeSelection={this.props.changeSelection} />
                     <div className="results-container">
-                    <div className="attr-container">
-                        <img className="attr" src={foursquare} alt="attribution four square" ></img>
-                    </div>
-                        <ul>    
-                            {appState.currentlyShowing.map(spot => (
-                                <li key={spot.venueId} className="list-items">
-                                    <a href="#/" onClick={() => this.toggleDiv(spot)}>
-                                        {spot.name ? spot.name : `Name unknown`}
-                                    </a>
-                                    {
-                                        spot.listDetailVisible && <ListItem
-                                            spot={spot} />
-                                    }
-                                </li>
-                            ))}
-                        </ul>
+                        <hr></hr>
+                        <div className="attr-container">
+                            <img className="attr" src={foursquare} alt="attribution four square" ></img>
+                        </div>
+                        <div className="list-items-container">
+                            <ul>
+                                {appState.currentlyShowing.map(spot => (
+                                    <li key={spot.venueId} className="list-items">
+                                        <a href="#/" onClick={() => this.toggleDiv(spot)}>
+                                            {spot.name ? spot.name : `Name unknown`}
+                                        </a>
+                                        {
+                                            spot.listDetailVisible && <ListItem
+                                                spot={spot} />
+                                        }
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div >
             </section>

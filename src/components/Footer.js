@@ -9,7 +9,7 @@ import '../css/App.css'
 
 const Footer = () => {
     return (
-        <footer id="footer">
+        <footer>
             Copyright (c) 2018 <strong>Party On</strong> All Rights Reserved.
         </footer>
     )
