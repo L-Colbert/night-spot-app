@@ -166,7 +166,7 @@ export function getNightSpots() {
         // `ll=33.748995,-84.387982`,
         `near=Atlanta,GA`,
         `query=club`,
-        `limit=5`,
+        `limit=20`,
         // `openNow=1`,
         `radius=25000`,
         `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
@@ -255,14 +255,11 @@ export function createMarkerArray(array, map, infoWin) {
             title: spot.name,
             animation: window.google.maps.Animation.DROP
         })
-
         bounds.extend(marker.position)
-
         //on marker click, zooms in and displays infowindow
         marker.addListener('click', () => {
             map.setZoom(12);
             map.setCenter(marker.getPosition());
-
             const contentStr = `<div class="venue-name"><strong> ${spot.name}</strong></div>
             ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ?
                     spot.location.formattedAddress[0] : "Adddress Not Available"}
@@ -283,7 +280,6 @@ export function createInfoWindow() {
         content: '',
         maxWidth: 300
     })
-
     infowindow.addListener('closeClick', () => {
         console.log('closed it!')
     })
