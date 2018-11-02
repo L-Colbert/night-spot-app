@@ -1,13 +1,16 @@
-/* html, */
 body {
   max-width: 98%;
-  /* margin: auto; */
   height: 100%;
+  background-color: #f0f1f1;
 }
 
 #root {
   width: 98%;
   margin: auto;
+}
+
+.error {
+  background-color: #a61e65
 }
 
 /****** header ******/
@@ -50,13 +53,8 @@ ul {
   list-style: none
 }
 
-/* .list-items-container {i
-
-} */
-
 select {
   font-family: inherit;
-  /* font-size: 100%; */
   border-radius: 4px;
   margin-left: 5px;
 }
@@ -90,7 +88,7 @@ main {
 
 #map-container {
   border-top: 1px solid #d9d9d9;
-  height: 36%;
+  height: 38%;
   position: fixed;
   width: 98%;
   margin: 0;
@@ -106,11 +104,7 @@ main {
   white-space: pre-line;
   color: #322136;
   font-weight: normal;
-}
-
-.gm-style img {
-  height: auto;
-  width: 134px;
+  padding-top: 16px;
 }
 
 /****** sidebar ******/
@@ -157,21 +151,38 @@ padding-bottom: 5px;
 }
 
 .venue-photo {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0;
+  padding: 9px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 .attr-container {
   text-align: right;
-  padding-right: 9px;
+  padding: 2px 17px 0px 193px;
+  height: 21px;
 }
 
-.attr {
-  height: auto;
-  width: 152px;
+.attr-container-iw {
+  border: 2px solid #a61e6580;
+  height: 12px;
+  width: 131px;
+  position: relative;
+  margin-top: 4px;
+  left: 0px;
+  top: 16px;
+  display: inline-block;
 }
+
+object {
+    color: #a61e6580;
+    position: relative;
+    bottom: 16px;
+  }
 
 .drop-down-menu
   {
@@ -183,10 +194,10 @@ padding-bottom: 5px;
 #sidebar ul {
   position: absolute;
   overflow: auto;
-  height: 100%;
+  height: 66%;
   margin: 0;
   padding-bottom: 0;
-  width: 96%;
+  width: 95%;
 
 }
 
@@ -195,11 +206,10 @@ padding-bottom: 5px;
   padding: 1px 0 3px 0px;
   margin-bottom: 7px;
   border-radius: 5px;
-  /* background-color: #f0f1f1; */
 }
 
 li a {
-  padding-left: 6px;
+  padding-left: 9px;
   font-size: 14px;
 }
 
@@ -219,13 +229,18 @@ td {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  border-radius: 0px 0px 0px 5px;
 }
 
 .address {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1rem;
   margin-top: 6px;
   padding-left: 6px;
+  }
+
+  table {
+    padding: 9px;
   }
 
   .hours-list,
@@ -236,6 +251,8 @@ td {
 
   .rating {
     margin: 4px 2px 5px;
+    padding-left: 6px;
+
   }
 
   .rating span {
@@ -260,7 +277,6 @@ footer {
 @media screen and (min-width: 475px) {
   main {
     border-top: 4px solid #fff;
-    /* border-bottom: 1px solid #d9d9d9; */
     height: 76vh;
     top: 113px;
     width: 100%
@@ -278,12 +294,12 @@ footer {
   #map-container {
     border-top: 1px solid #d9d9d9;
     background: #eee none repeat scroll 0 0;
-    height: 78%;
+    height: 76%;
     position: fixed;
     right: 0px;
     width: 50%;
     margin: 0;
-    top: 19%;
+    top: 21%;
     left: 50%;
   }
   
@@ -297,14 +313,14 @@ footer {
   }
 
   section {
-    width: 50%;
+    width: 49%;
     border-top: none;
-    height: 78%;
+    height: 79%;
     top: 19%;
   }
 
   .filter {
-    width: 50%;
+    width: 49%;
     height: 39px;
     padding: 10px 0px 33px 0;
 
@@ -315,8 +331,12 @@ footer {
     width: 100%;
   }
 
+  #sidebar ul {
+    height: 74%;
+  }
   .results-container {
-    padding-top: 84px;
+    padding-top: 85px;
+    height: 81%;
   }
 
   footer {
@@ -329,50 +349,81 @@ footer {
 }
 
   @media screen and (min-width: 768px) {
+    section h3 {
+      padding-bottom: 3px;
+    }
+    
     section {
-    width: 44%;
-    border: 36  px solid #f0f1f1;
+      width: 35%;
+      height: 70%;
+      border: 50px solid #f0f1f1;
+      border-bottom: 0;
     }
 
     #sidebar {
       border: 2px solid #d9d9d9;
     }  
 
+    #sidebar ul {
+      height: 70%;
+    }  
+  
     .filter {
-      width: 44%;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    section {
-      width: 40%;
-      border: 50px solid #f0f1f1;
-    }
-
-    .filter {
-      width: 40%;
+      width: 35%;
       padding-top: 7px;
       padding-bottom: 36px;
     }
-    
+
+}
+
+  @media screen and (min-width: 800px) {
     section h3 {
       padding-bottom: 3px;
+    }
+    
+    section {
+      width: 37%;
+      border: 50px solid #f0f1f1;
+    }
+    #sidebar {
+      border: 2px solid #d9d9d9;
+    }  
+  
+    .filter {
+      width: 37%;
+      padding-top: 7px;
+      padding-bottom: 36px;
     }
 }
 
 @media screen and (min-width: 1000px) {
-  #map-container {
-  width: 56%;
-  left: 45%;
+  main {
+    height: 83vh;
   }
 
+  #map-container {
+    width: 60%;
+    left: 40%;  }
+
   section {
-    width: 29%;
-    border-right: 204px solid #f0f1f1;
-    border-left: 203px solid #f0f1f1;
+    width: 26%;
+    height: 72vh;
+    border-left: 65px solid #f0f1f1;
+    border-right: 65px solid #f0f1f1;
+    top: 17%
   }
 
   .filter {
-    width: 29%
+    width: 26%;
   }
+    #sidebar {
+    height: 100%;
+  }
+  #sidebar ul {
+    height: 71%;
+  }
+
+  .results-container {
+    height: 80%;
+}
 }

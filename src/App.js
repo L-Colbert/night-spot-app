@@ -8,7 +8,7 @@ import { load_google_maps, getNightSpots, createInitialMap } from './util'
 import { setNeighborhood, createNeighborhoodBounds, panToNeighborhoodBounds, createMarkerArray, getSpotDetails, createInfoWindow } from './util'
 import './css/App.css'
 import Sidebar from './components/Sidebar'
-import ErrorHandling from './components/ErrorHandling'
+import ErrorBoundary from './components/ErrorBoundary'
 import Footer from './components/Footer'
 
 class App extends Component {
@@ -29,23 +29,21 @@ class App extends Component {
  * @template TYPE
  */
   componentDidMount() {
-
     const googleMapsPromise = load_google_maps()
     const APIdata = getNightSpots()
-
     Promise.all([googleMapsPromise, APIdata])
-      .then(values => {
-        this.google = values[0]
-        this.nightSpots = values[1]
-        this.neighborhoodBounds = createNeighborhoodBounds()
-        this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
-        const spotDetails = getSpotDetails(this.nightSpots)
-        this.infowindow = createInfoWindow()
-        this.map = createInitialMap(this.infowindow)
-        this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
-        this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow /*, visibleMarkers: this.allMarkers*/ })
+    .then(values => {
+      this.google = values[0]
+      this.nightSpots = values[1]
+      this.neighborhoodBounds = createNeighborhoodBounds()
+      this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
+      const spotDetails = getSpotDetails(this.nightSpots)
+      this.infowindow = createInfoWindow()
+      this.map = createInitialMap(this.infowindow)
+      this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
+      this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow /*, visibleMarkers: this.allMarkers*/ })
       }).catch(error => {
-        console.log(`Promise all produced error: ${error}`)
+        throw new Error(`Promise all produced error: ${error}`)
       })
   }
 
@@ -109,6 +107,7 @@ class App extends Component {
         </header>
         <a href="#sidebar" className="skip-link">Skip to night club search</a>
         <main>
+          <ErrorBoundary>
           <div id="map-container">
             <div
               id="map"
@@ -118,7 +117,6 @@ class App extends Component {
               {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
             </div>
           </div>
-          <ErrorHandling>
             <Sidebar
               changeSelection={this.changeSelection}
               individualStateUpdate={this.individualStateUpdate}
@@ -126,7 +124,7 @@ class App extends Component {
               allMarkers={this.allMarkers}
               map={this.map}
             />
-          </ErrorHandling>
+          </ErrorBoundary>
         </main>
         <Footer />
       </div>

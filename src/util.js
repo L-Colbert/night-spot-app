@@ -1,4 +1,5 @@
-import foursquare from './img/small-pink-foursquare-grey.png'
+import Foursquare from './img/powered-by-foursquare-grey.svg'
+
 
 export function load_google_maps() {
     return new Promise(function (resolve, reject) {
@@ -115,7 +116,7 @@ export function createInitialMap(infoWin) {
     //closes infowindow if map is clicked and zooms out
     infoWin.addListener('closeclick', () => {
         infoWin.marker = null
-        map.setZoom(10)
+        map.setZoom(11)
     })
     return map
 }
@@ -161,22 +162,23 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
  */
 export function getNightSpots() {
 
-    // let fourSqParams = [
-    //   // `ll=33.748995,-84.387982`,
-    //   `near=Atlanta,GA`,
-    //   `query=club`,
-    //   `limit=3`,
-    //   // `openNow=1`,
-    //   `radius=25000`,
-    //   `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
-    //   `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
-    //   `v=20181003`
-    // ].join('&')
+    let fourSqParams = [
+        // `ll=33.748995,-84.387982`,
+        `near=Atlanta,GA`,
+        `query=club`,
+        `limit=5`,
+        // `openNow=1`,
+        `radius=25000`,
+        `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
+        `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
+        `v=20181003`
+    ].join('&')
 
-    // let fourSqUrl = `https://api.foursquare.com/v2/venues/explore?${fourSqParams}`
+    let fourSqUrl = `https://api.foursquare.com/v2/venues/explore?${fourSqParams}`
 
     return new Promise(function (resolve, reject) {
-        fetch('../response.json')
+        // fetch('../response.json')
+        fetch(fourSqUrl)
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -212,16 +214,16 @@ export function getSpotDetails(spotsArray) {
         return null
     }
     spotsArray.map(spot => {
-        // let DetailParams = [
-        // 'id=' + spot.venueId,
-        //     `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
-        //     `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
-        //     `v=20181003`
-        // ].join('&')
-        // let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
-
-        // fetch(detailsUrl)
-        fetch('../details.json')
+        let DetailParams = [
+            'id=' + spot.venueId,
+            `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`,
+            `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`,
+            `v=20181003`
+        ].join('&')
+        let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
+        // console.log(detailsUrl)
+        fetch(detailsUrl)
+        // fetch('../details.json')
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -235,6 +237,7 @@ export function getSpotDetails(spotsArray) {
             }).catch(error => {
                 console.log(`No spot details because: ${error}`)
             })
+        return spot
     })
     return spotsArray
 }
@@ -245,7 +248,7 @@ export function createMarkerArray(array, map, infoWin) {
         let marker = new window.google.maps.Marker({
             key: spot.venueId,
             icon: {
-                url: "http://maps.google.com/mapfiles/ms/icons/lightblue.png"
+                url: "http://maps.google.com/mapfiles/kml/pal2/icon27.png"
             },
             map: map,
             position: { lat: spot.lat, lng: spot.lng },
@@ -260,15 +263,13 @@ export function createMarkerArray(array, map, infoWin) {
             map.setZoom(12);
             map.setCenter(marker.getPosition());
 
-            // const imgTag = spot.bestPhoto && spot.bestPhoto.prefix ?
-            // `<img src="${spot.bestPhoto.prefix}height300${spot.bestPhoto.suffix}" alt="${spot.name}">` : ``
-            // <div>${imgTag}
-            const contentStr = `<div className="venue-name"><strong> ${spot.name}</strong></div>
+            const contentStr = `<div class="venue-name"><strong> ${spot.name}</strong></div>
             ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[0] ?
                     spot.location.formattedAddress[0] : "Adddress Not Available"}
             ${spot.location && spot.location.formattedAddress && spot.location.formattedAddress[1] ?
-                    spot.location.formattedAddress[1] : ""}
-            <img src=${foursquare} alt="attribution four square" ></img></div>`
+                    spot.location.formattedAddress[1] : ""}<div class="attr-container-iw">
+                    <object data=${Foursquare} type="image/svg+xml" width:"75" height:"auto" class="fourSqr"/>
+                    </div></img></div>`
             infoWin.setContent(contentStr)
             infoWin.open(map, marker)
         })
@@ -277,11 +278,14 @@ export function createMarkerArray(array, map, infoWin) {
     })
 }
 
-
 export function createInfoWindow() {
     let infowindow = new window.google.maps.InfoWindow({
         content: '',
         maxWidth: 300
+    })
+
+    infowindow.addListener('closeClick', () => {
+        console.log('closed it!')
     })
     return infowindow
 }

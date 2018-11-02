@@ -8,8 +8,9 @@ import React, { Component } from 'react';
 import '../css/App.css'
 import ListItem from './ListItem'
 import DropDown from './DropDown'
-import foursquare from '../img/small-pink-foursquare-grey.png'
 import PropTypes from 'prop-types'
+import { ReactComponent as Foursquare } from '../img/powered-by-foursquare-grey.svg'
+
 
 class Sidebar extends Component {
     static propTypes = {
@@ -74,7 +75,7 @@ class Sidebar extends Component {
                     <div className="results-container">
                         <hr></hr>
                         <div className="attr-container">
-                            <img className="attr" src={foursquare} alt="attribution four square" ></img>
+                        <Foursquare fill={"#a61e65"} />
                         </div>
                         <div className="list-items-container">
                             <ul>

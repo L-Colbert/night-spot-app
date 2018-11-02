@@ -32,15 +32,17 @@ const ListItem = (props) => {
                 {`${spot.location ? spot.location.formattedAddress[0] : `Address: Not found address`}
                 ${spot.location ? spot.location.formattedAddress[1] : ``}`}
             </div>
-            <ul className="hours">
-                {(spot.popular && spot.popular.timeframes) ?
-                spot.popular.timeframes.map(day => (
-                    <tr key={day.days} className="hours-list">
-                        <td>{day.days}</td><td>{day.open[0].renderedTime}</td>
-                    </tr>
-                ))
-                : ``}
-            </ul>
+            <table>
+                <tbody className="hours">
+                    {(spot.popular && spot.popular.timeframes) ?
+                        spot.popular.timeframes.map(day => (
+                            <tr key={day.days} className="hours-list">
+                                <td><strong>{day.days}</strong></td><td>{day.open[0].renderedTime}</td>
+                            </tr>
+                        ))
+                        : ``}
+                </tbody>
+            </table>
             <p className="rating">Rating: <span><strong>{spot.rating ? spot.rating : `Unpublished rating`}</strong></span></p>
             <a className="more-details" rel="noopener noreferrer" href={`${spot.canonicalUrl ? spot.canonicalUrl : ``}`} target="_blank">More Details</a>
         </div>
