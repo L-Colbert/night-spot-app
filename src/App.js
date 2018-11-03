@@ -16,13 +16,14 @@ class App extends Component {
     // staticMap: [],
     currentlyShowing: [],
     onlyInfoWin: null,
-    showingInfoWindow: false
+    showingInfoWindow: false,
+    newError: false
   }
 
   // adapted from code graciously provided by Ryan Waite
   // https://raw.githubusercontent.com/ryanwaite28/script-store/master/js/react_resolve_google_maps.js
   /**
- * Before commponent is mounted, load google maps and 
+ * If commponent is mounted, load google maps and 
  * optain third party data
  * @param {TYPE} arg
  * @return {!Array<TYPE>}
@@ -32,17 +33,18 @@ class App extends Component {
     const googleMapsPromise = load_google_maps()
     const APIdata = getNightSpots()
     Promise.all([googleMapsPromise, APIdata])
-    .then(values => {
-      this.google = values[0]
-      this.nightSpots = values[1]
-      this.neighborhoodBounds = createNeighborhoodBounds()
-      this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
-      const spotDetails = getSpotDetails(this.nightSpots)
-      this.infowindow = createInfoWindow()
-      this.map = createInitialMap(this.infowindow)
-      this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
-      this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow /*, visibleMarkers: this.allMarkers*/ })
+      .then(values => {
+        this.google = values[0]
+        this.nightSpots = values[1]
+        this.neighborhoodBounds = createNeighborhoodBounds()
+        this.nightSpots = setNeighborhood(this.neighborhoodBounds, this.nightSpots)
+        const spotDetails = getSpotDetails(this.nightSpots)
+        this.infowindow = createInfoWindow()
+        this.map = createInitialMap(this.infowindow)
+        this.allMarkers = createMarkerArray(spotDetails, this.map, this.infowindow)
+        this.setState({ currentlyShowing: spotDetails, onlyInfoWin: this.infowindow })
       }).catch(error => {
+        this.setState({ newError: true })
         throw new Error(`Promise all produced error: ${error}`)
       })
   }
@@ -106,27 +108,29 @@ class App extends Component {
           </h1>
         </header>
         <a href="#sidebar" className="skip-link">Skip to night club search</a>
-        <main>
-          <ErrorBoundary>
-          <div id="map-container">
-            <div
-              id="map"
-              tabIndex="-1"
-              role="application"
-              aria-label="location">
-              {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
-            </div>
-          </div>
-            <Sidebar
-              changeSelection={this.changeSelection}
-              individualStateUpdate={this.individualStateUpdate}
-              appState={this.state}
-              allMarkers={this.allMarkers}
-              map={this.map}
-            />
-          </ErrorBoundary>
-        </main>
-        <Footer />
+        <ErrorBoundary>
+          {this.state.newError ? <h2 className="new-error">Sorry, page unavailable</h2> :
+            <main>
+              <div id="map-container">
+                <div
+                  id="map"
+                  tabIndex="-1"
+                  role="application"
+                  aria-label="location">
+                  {/* <img src={this.props.copyOfMapAtl} alt="map of Atlanta, GA" /> */}
+                </div>
+              </div>
+              <Sidebar
+                changeSelection={this.changeSelection}
+                individualStateUpdate={this.individualStateUpdate}
+                appState={this.state}
+                allMarkers={this.allMarkers}
+                map={this.map}
+              />
+            </main>
+          }
+          <Footer />
+        </ErrorBoundary>
       </div>
     )
   }

@@ -26,21 +26,30 @@ Get the Project
 
 ## Getting started
 
-1. Obtain a Google Maps API key
+1. Open your preferred browser
 
-2. Open your preferred browser
+2. In a terminal window, type ```npm start``` to start the development server.
 
-3. In a terminal window, type ```npm start``` to start the development server.
+3. A window with location (localhost:3000) will open in your browser.
 
-4. A window with location (localhost:3000) will open in your browser.
+4. To create a production bundle, use `npm run build` or `yarn build`.
 
-5. To create a production bundle, use `npm run build` or `yarn build`.
-
-6. If you want your app to work offline and load faster, you can change unregister() to register() in index.js, to register the Service Worker. Note this comes with some pitfalls. Learn more about [service workers](http://bit.ly/CRA-PWA)
+5. If you want your app to work offline and load faster, you can change ```unregister()``` to ```register()``` in index.js, to register the Service Worker. Note this comes with some pitfalls. Learn more about [service workers](http://bit.ly/CRA-PWA)
 
 ### HOW TO use
 
-In the drop-down menu, select the neighborhood that interests you. Select a location, either my selecting it's locaton name or a marker on the map.  The location name is also a link to the Foursquare venue page.
+In the drop-down menu, select the neighborhood that interests you. Select a location, either my selecting it's locaton name or a marker on the map.  The location name is also a link to the Foursquare venue page. If the Foursquare request quota has been exceeded, uncomment line 146 and comment line 147 to use a sample json file
+
+```146 fetch('../response.json').then(response => {```
+
+```147 //fetch(fourSqUrl).then(response => {```
+
+and uncomment line 184 and comment line 183 to use a sample details json file
+
+```183 //fetch(detailsUrl)```
+
+```184 fetch('../details.json')```
+
 
 ### Contributors
 

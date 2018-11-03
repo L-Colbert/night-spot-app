@@ -137,14 +137,13 @@ export function setNeighborhood(neighbrhdboundsArr, nightSpotsArr) {
  */
 export function getNightSpots() {
     let fourSqParams = [
-        // `ll=33.748995,-84.387982`,
-        `near=Atlanta,GA`, `query=club`, `limit=20`,
+        `near=Atlanta,GA`, `query=club`, `limit=10`,
         // `openNow=1`,
         `radius=25000`, `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`, `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`, `v=20181003`
     ].join('&')
     let fourSqUrl = `https://api.foursquare.com/v2/venues/explore?${fourSqParams}`
     return new Promise(function(resolve, reject) {
-        // fetch('../response.json')
+        // fetch('../response.json').then(response => {
         fetch(fourSqUrl).then(response => {
             if (response.ok) {
                 return response.json()
@@ -181,9 +180,8 @@ export function getSpotDetails(spotsArray) {
     spotsArray.map(spot => {
         let DetailParams = ['id=' + spot.venueId, `client_id=3ZV20H0X5WOSYXQQ2FVI0NHCNGPYLTHUZQLRE1EVOTRGHYKP`, `client_secret=3AOFNXLIEMMCFLR3VSXRALYVCWUYFT4SEVXYUTSKKD3WJWXV`, `v=20181003`].join('&')
         let detailsUrl = `https://api.foursquare.com/v2/venues/${spot.venueId}?${DetailParams}`
-        // console.log(detailsUrl)
         fetch(detailsUrl)
-            // fetch('../details.json')
+        // fetch('../details.json')
             .then(response => {
                 if (response.ok) {
                     return response.json()

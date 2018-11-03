@@ -17,7 +17,7 @@ const ListItem = (props) => {
 
     const imgTag = () => {
         if (spot.bestPhoto && spot.bestPhoto.prefix) {
-            const height = `height100`
+            const height = `original`
             const imgSrc = `${spot.bestPhoto.prefix}${height}${spot.bestPhoto.suffix}`
             return <img className="venue-photo" src={imgSrc} alt={spot.name}></img>
         }
@@ -40,7 +40,7 @@ const ListItem = (props) => {
                                 <td><strong>{day.days}</strong></td><td>{day.open[0].renderedTime}</td>
                             </tr>
                         ))
-                        : ``}
+                        : null}
                 </tbody>
             </table>
             <p className="rating">Rating: <span><strong>{spot.rating ? spot.rating : `Unpublished rating`}</strong></span></p>

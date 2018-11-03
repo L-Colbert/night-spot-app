@@ -33,6 +33,10 @@ h1, h2, h3 {
   margin: 0;
   text-transform: uppercase;
 }
+.new-error {
+  padding-top: 35%;
+  color: #322136;
+}
 hr {
   background: #427e8f;
   height: 1px;
@@ -91,7 +95,6 @@ main {
   white-space: pre-line;
   color: #322136;
   font-weight: normal;
-  padding-top: 16px;
 }
 /****** sidebar ******/
 
@@ -150,11 +153,9 @@ section {
   border: 2px solid #a61e6580;
   height: 12px;
   width: 131px;
-  position: relative;
   margin-top: 4px;
   left: 0px;
   top: 16px;
-  display: inline-block;
 }
 object {
   color: #a61e6580;
@@ -255,12 +256,12 @@ footer {
   #map-container {
     border-top: 1px solid #d9d9d9;
     background: #eee none repeat scroll 0 0;
-    height: 76%;
+    height: 78%;
     position: fixed;
     right: 0px;
     width: 50%;
     margin: 0;
-    top: 21%;
+    top: 19%;
     left: 50%;
   }
   #map {
