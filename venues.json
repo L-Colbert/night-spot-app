@@ -1,0 +1,366 @@
+{
+    "meta": {
+        "code": 200,
+        "requestId": "5bbb9c644c1f67197b053d3f"
+    },
+    "response": {
+        "suggestedFilters": {
+            "header": "Tap to show:",
+            "filters": [
+                {
+                    "name": "Open now",
+                    "key": "openNow"
+                },
+                {
+                    "name": "$-$$$$",
+                    "key": "price"
+                }
+            ]
+        },
+        "geocode": {
+            "what": "",
+            "where": "atlanta ga",
+            "center": {
+                "lat": 33.749,
+                "lng": -84.38798
+            },
+            "displayString": "Atlanta, GA, United States",
+            "cc": "US",
+            "geometry": {
+                "bounds": {
+                    "ne": {
+                        "lat": 33.886823,
+                        "lng": -84.28956
+                    },
+                    "sw": {
+                        "lat": 33.647808,
+                        "lng": -84.551068
+                    }
+                }
+            },
+            "slug": "atlanta-georgia",
+            "longId": "72057594042108375"
+        },
+        "headerLocation": "Atlanta",
+        "headerFullLocation": "Atlanta",
+        "headerLocationGranularity": "city",
+        "query": "club",
+        "totalResults": 136,
+        "suggestedBounds": {
+            "ne": {
+                "lat": 33.849964033877605,
+                "lng": -84.36202546769687
+            },
+            "sw": {
+                "lat": 33.749704965645,
+                "lng": -84.38955370300926
+            }
+        },
+        "groups": [
+            {
+                "type": "Recommended Places",
+                "name": "recommended",
+                "items": [
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520f9061fe3",
+                            "name": "MJQ Concourse",
+                            "location": {
+                                "address": "736 Ponce de Leon Ave NE",
+                                "crossStreet": "Ponce De Leon Pl",
+                                "lat": 33.77421750050488,
+                                "lng": -84.36327675112015,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.77421750050488,
+                                        "lng": -84.36327675112015
+                                    }
+                                ],
+                                "postalCode": "30306",
+                                "cc": "US",
+                                "neighborhood": "",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "736 Ponce de Leon Ave NE (Ponce De Leon Pl)",
+                                    "Atlanta, GA 30306",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520f9061fe3-0"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a5811c9f964a52053b71fe3",
+                            "name": "Opera Nightclub",
+                            "location": {
+                                "address": "1150 Crescent Ave NE",
+                                "crossStreet": "13th St NE",
+                                "lat": 33.78593786606736,
+                                "lng": -84.38402831554413,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.78593786606736,
+                                        "lng": -84.38402831554413
+                                    }
+                                ],
+                                "postalCode": "30309",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1150 Crescent Ave NE (13th St NE)",
+                                    "Atlanta, GA 30309",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "33204879"
+                            }
+                        },
+                        "referralId": "e-0-4a5811c9f964a52053b71fe3-1"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4aed3d58f964a5205ecd21e3",
+                            "name": "Gold Room Nightclub",
+                            "location": {
+                                "address": "2416 Piedmont Rd NE",
+                                "crossStreet": "btw Lindbergh Dr & Lindbergh Way",
+                                "lat": 33.821110074608285,
+                                "lng": -84.36870042987137,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.821110074608285,
+                                        "lng": -84.36870042987137
+                                    }
+                                ],
+                                "postalCode": "30324",
+                                "cc": "US",
+                                "neighborhood": "Buckhead",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "2416 Piedmont Rd NE (btw Lindbergh Dr & Lindbergh Way)",
+                                    "Atlanta, GA 30324",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "33885616"
+                            }
+                        },
+                        "referralId": "e-0-4aed3d58f964a5205ecd21e3-2"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b228a08f964a520a04824e3",
+                            "name": "Cherokee Town and Country Club - Town Club",
+                            "location": {
+                                "address": "155 W Paces Ferry Rd NW",
+                                "crossStreet": "Chatham Road",
+                                "lat": 33.8454068035034,
+                                "lng": -84.38830241958597,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.8454068035034,
+                                        "lng": -84.38830241958597
+                                    }
+                                ],
+                                "postalCode": "30305",
+                                "cc": "US",
+                                "neighborhood": "Buckhead",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "155 W Paces Ferry Rd NW (Chatham Road)",
+                                    "Atlanta, GA 30305",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "52e81612bcbc57f1066b7a35",
+                                    "name": "Club House",
+                                    "pluralName": "Club Houses",
+                                    "shortName": "Club",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/building/default_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4b228a08f964a520a04824e3-3"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a0e2586f964a520cc751fe3",
+                            "name": "Noni's Bar & Deli",
+                            "location": {
+                                "address": "357 Edgewood Ave. NE",
+                                "crossStreet": "Btw Hilliard St. SE & Wm Holmes Borders Dr. SE",
+                                "lat": 33.75426219601921,
+                                "lng": -84.37596723920934,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.75426219601921,
+                                        "lng": -84.37596723920934
+                                    }
+                                ],
+                                "postalCode": "30312",
+                                "cc": "US",
+                                "neighborhood": "Little Five Points",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "357 Edgewood Ave. NE (Btw Hilliard St. SE & Wm Holmes Borders Dr. SE)",
+                                    "Atlanta, GA 30312",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d116941735",
+                                    "name": "Bar",
+                                    "pluralName": "Bars",
+                                    "shortName": "Bar",
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "90483462"
+                            }
+                        },
+                        "referralId": "e-0-4a0e2586f964a520cc751fe3-4"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,1229 @@
+{
+    "meta": {
+        "code": 200,
+        "requestId": "5bcbb398351e3d1691549057"
+    },
+    "response": {
+        "suggestedFilters": {
+            "header": "Tap to show:",
+            "filters": [
+                {
+                    "name": "Open now",
+                    "key": "openNow"
+                },
+                {
+                    "name": "$-$$$$",
+                    "key": "price"
+                }
+            ]
+        },
+        "geocode": {
+            "what": "",
+            "where": "atlanta ga",
+            "center": {
+                "lat": 33.749,
+                "lng": -84.38798
+            },
+            "displayString": "Atlanta, GA, United States",
+            "cc": "US",
+            "geometry": {
+                "bounds": {
+                    "ne": {
+                        "lat": 33.886823,
+                        "lng": -84.28956
+                    },
+                    "sw": {
+                        "lat": 33.647808,
+                        "lng": -84.551068
+                    }
+                }
+            },
+            "slug": "atlanta-georgia",
+            "longId": "72057594042108375"
+        },
+        "headerLocation": "Atlanta",
+        "headerFullLocation": "Atlanta",
+        "headerLocationGranularity": "city",
+        "query": "club",
+        "totalResults": 139,
+        "suggestedBounds": {
+            "ne": {
+                "lat": 33.869807779730394,
+                "lng": -84.29490949054862
+            },
+            "sw": {
+                "lat": 33.60490742417788,
+                "lng": -84.47998849947167
+            }
+        },
+        "groups": [
+            {
+                "type": "Recommended Places",
+                "name": "recommended",
+                "items": [
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520f9061fe3",
+                            "name": "MJQ Concourse",
+                            "location": {
+                                "address": "736 Ponce de Leon Ave NE",
+                                "crossStreet": "Ponce De Leon Pl",
+                                "lat": 33.77421750050488,
+                                "lng": -84.36327675112015,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.77421750050488,
+                                        "lng": -84.36327675112015
+                                    }
+                                ],
+                                "postalCode": "30306",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "736 Ponce de Leon Ave NE (Ponce De Leon Pl)",
+                                    "Atlanta, GA 30306",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520f9061fe3-0"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a5811c9f964a52053b71fe3",
+                            "name": "Opera Nightclub",
+                            "location": {
+                                "address": "1150 Crescent Ave NE",
+                                "crossStreet": "13th St NE",
+                                "lat": 33.78593786606736,
+                                "lng": -84.38402831554413,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.78593786606736,
+                                        "lng": -84.38402831554413
+                                    }
+                                ],
+                                "postalCode": "30309",
+                                "cc": "US",
+                                "neighborhood": "Midtown",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1150 Crescent Ave NE (13th St NE)",
+                                    "Atlanta, GA 30309",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "33204879"
+                            }
+                        },
+                        "referralId": "e-0-4a5811c9f964a52053b71fe3-1"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4aed3d58f964a5205ecd21e3",
+                            "name": "Gold Room Nightclub",
+                            "location": {
+                                "address": "2416 Piedmont Rd NE",
+                                "crossStreet": "btw Lindbergh Dr & Lindbergh Way",
+                                "lat": 33.821110074608285,
+                                "lng": -84.36870042987137,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.821110074608285,
+                                        "lng": -84.36870042987137
+                                    }
+                                ],
+                                "postalCode": "30324",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "2416 Piedmont Rd NE (btw Lindbergh Dr & Lindbergh Way)",
+                                    "Atlanta, GA 30324",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "33885616"
+                            }
+                        },
+                        "referralId": "e-0-4aed3d58f964a5205ecd21e3-2"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b228a08f964a520a04824e3",
+                            "name": "Cherokee Town and Country Club - Town Club",
+                            "location": {
+                                "address": "155 W Paces Ferry Rd NW",
+                                "crossStreet": "Chatham Road",
+                                "lat": 33.8454068035034,
+                                "lng": -84.38830241958597,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.8454068035034,
+                                        "lng": -84.38830241958597
+                                    }
+                                ],
+                                "postalCode": "30305",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "155 W Paces Ferry Rd NW (Chatham Road)",
+                                    "Atlanta, GA 30305",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "52e81612bcbc57f1066b7a35",
+                                    "name": "Club House",
+                                    "pluralName": "Club Houses",
+                                    "shortName": "Club",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/building\/default_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4b228a08f964a520a04824e3-3"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a0e2586f964a520cc751fe3",
+                            "name": "Noni's Bar & Deli",
+                            "location": {
+                                "address": "357 Edgewood Ave. NE",
+                                "crossStreet": "Btw Hilliard St. SE & Wm Holmes Borders Dr. SE",
+                                "lat": 33.75426219601921,
+                                "lng": -84.37596723920934,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.75426219601921,
+                                        "lng": -84.37596723920934
+                                    }
+                                ],
+                                "postalCode": "30312",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "357 Edgewood Ave. NE (Btw Hilliard St. SE & Wm Holmes Borders Dr. SE)",
+                                    "Atlanta, GA 30312",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d116941735",
+                                    "name": "Bar",
+                                    "pluralName": "Bars",
+                                    "shortName": "Bar",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/pub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "90483462"
+                            }
+                        },
+                        "referralId": "e-0-4a0e2586f964a520cc751fe3-4"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b5a7f69f964a5204fc828e3",
+                            "name": "Havana Club",
+                            "location": {
+                                "address": "3112 Piedmont Rd NE",
+                                "lat": 33.84102405429794,
+                                "lng": -84.37042641264355,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.84102405429794,
+                                        "lng": -84.37042641264355
+                                    }
+                                ],
+                                "postalCode": "30305",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "3112 Piedmont Rd NE",
+                                    "Atlanta, GA 30305",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "36455695"
+                            }
+                        },
+                        "referralId": "e-0-4b5a7f69f964a5204fc828e3-5"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520a7071fe3",
+                            "name": "Tongue & Groove",
+                            "location": {
+                                "address": "2420 Piedmont Rd NE",
+                                "lat": 33.82267194641414,
+                                "lng": -84.36846487967668,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.82267194641414,
+                                        "lng": -84.36846487967668
+                                    }
+                                ],
+                                "postalCode": "30324",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "2420 Piedmont Rd NE",
+                                    "Atlanta, GA 30324",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520a7071fe3-6"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b2af82af964a52013b324e3",
+                            "name": "CosmoLava Lounge",
+                            "location": {
+                                "address": "45 13th St NE",
+                                "crossStreet": "Crescent",
+                                "lat": 33.7854877382271,
+                                "lng": -84.38573870418453,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.7854877382271,
+                                        "lng": -84.38573870418453
+                                    }
+                                ],
+                                "postalCode": "30309",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "45 13th St NE (Crescent)",
+                                    "Atlanta, GA 30309",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "81080518"
+                            }
+                        },
+                        "referralId": "e-0-4b2af82af964a52013b324e3-7"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "428d2880f964a520ab231fe3",
+                            "name": "Union EAV",
+                            "location": {
+                                "address": "485 Flat Shoals Ave SE",
+                                "lat": 33.740774744228034,
+                                "lng": -84.34635664270147,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.740774744228034,
+                                        "lng": -84.34635664270147
+                                    }
+                                ],
+                                "postalCode": "30316",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "485 Flat Shoals Ave SE",
+                                    "Atlanta, GA 30316",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-428d2880f964a520ab231fe3-8"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4d82e8a702eb5481869c0ff5",
+                            "name": "The Basement",
+                            "location": {
+                                "address": "1245 Glenwood Ave SE",
+                                "lat": 33.74006699523062,
+                                "lng": -84.346729443513,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.74006699523062,
+                                        "lng": -84.346729443513
+                                    }
+                                ],
+                                "postalCode": "30316",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1245 Glenwood Ave SE",
+                                    "Atlanta, GA 30316",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4d82e8a702eb5481869c0ff5-9"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520a8061fe3",
+                            "name": "Johnny's Hideaway",
+                            "location": {
+                                "address": "3771 Roswell Rd NE",
+                                "lat": 33.85776685447801,
+                                "lng": -84.38119839485601,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.85776685447801,
+                                        "lng": -84.38119839485601
+                                    }
+                                ],
+                                "postalCode": "30342",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "3771 Roswell Rd NE",
+                                    "Atlanta, GA 30342",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520a8061fe3-10"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a4acef8f964a52036ac1fe3",
+                            "name": "Universal Joint",
+                            "location": {
+                                "address": "906 Oakview Rd",
+                                "crossStreet": "at E Lake Dr.",
+                                "lat": 33.759495201273445,
+                                "lng": -84.3033221727724,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.759495201273445,
+                                        "lng": -84.3033221727724
+                                    }
+                                ],
+                                "postalCode": "30030",
+                                "cc": "US",
+                                "city": "Decatur",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "906 Oakview Rd (at E Lake Dr.)",
+                                    "Decatur, GA 30030",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d116941735",
+                                    "name": "Bar",
+                                    "pluralName": "Bars",
+                                    "shortName": "Bar",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/pub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4a4acef8f964a52036ac1fe3-11"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520fa051fe3",
+                            "name": "Clermont Lounge",
+                            "location": {
+                                "address": "789 Ponce de Leon Ave NE",
+                                "lat": 33.773538639157216,
+                                "lng": -84.36150084286398,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.773538639157216,
+                                        "lng": -84.36150084286398
+                                    }
+                                ],
+                                "postalCode": "30306",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "789 Ponce de Leon Ave NE",
+                                    "Atlanta, GA 30306",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d118941735",
+                                    "name": "Dive Bar",
+                                    "pluralName": "Dive Bars",
+                                    "shortName": "Dive Bar",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/divebar_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "59871217"
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520fa051fe3-12"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4c79e02b794e224b30306728",
+                            "name": "Royal Peacock",
+                            "location": {
+                                "address": "186 1\/2 Auburn Ave NE",
+                                "crossStreet": "Piedmont Ave",
+                                "lat": 33.75579042506095,
+                                "lng": -84.38163200849348,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.75579042506095,
+                                        "lng": -84.38163200849348
+                                    }
+                                ],
+                                "postalCode": "30303",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "186 1\/2 Auburn Ave NE (Piedmont Ave)",
+                                    "Atlanta, GA 30303",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4c79e02b794e224b30306728-13"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4eb4dc08991165b76229d711",
+                            "name": "Space2",
+                            "location": {
+                                "address": "485 Edgewood Ave SE",
+                                "lat": 33.754193919372355,
+                                "lng": -84.37179524639586,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.754193919372355,
+                                        "lng": -84.37179524639586
+                                    }
+                                ],
+                                "postalCode": "30312",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "485 Edgewood Ave SE",
+                                    "Atlanta, GA 30312",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4eb4dc08991165b76229d711-14"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4de326a318385df2b035f402",
+                            "name": "Backstage Night Club & Lounge",
+                            "location": {
+                                "address": "2505 Godby Rd",
+                                "lat": 33.61694834943027,
+                                "lng": -84.4715758172479,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.61694834943027,
+                                        "lng": -84.4715758172479
+                                    }
+                                ],
+                                "postalCode": "30349",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "2505 Godby Rd",
+                                    "Atlanta, GA 30349",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "delivery": {
+                                "id": "908701",
+                                "url": "https:\/\/www.grubhub.com\/restaurant\/backstage-restaurant--lounge-2505-godby-rd-atlanta\/908701?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=908701",
+                                "provider": {
+                                    "name": "grubhub",
+                                    "icon": {
+                                        "prefix": "https:\/\/igx.4sqi.net\/img\/general\/cap\/",
+                                        "sizes": [
+                                            40,
+                                            50
+                                        ],
+                                        "name": "\/delivery_provider_grubhub_20180129.png"
+                                    }
+                                }
+                            },
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4de326a318385df2b035f402-15"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4a770aeaf964a52071e31fe3",
+                            "name": "595 North Event Center",
+                            "location": {
+                                "address": "595 North Ave NW",
+                                "crossStreet": "Travis Street SW",
+                                "lat": 33.770202285898485,
+                                "lng": -84.40687449110054,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.770202285898485,
+                                        "lng": -84.40687449110054
+                                    }
+                                ],
+                                "postalCode": "30318",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "595 North Ave NW (Travis Street SW)",
+                                    "Atlanta, GA 30318",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4a770aeaf964a52071e31fe3-16"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4362bb80f964a5204c291fe3",
+                            "name": "Philips Arena (State Farm Arena)",
+                            "location": {
+                                "address": "1 Philips Dr NW",
+                                "crossStreet": "at Centennial Olympic Park Dr",
+                                "lat": 33.757072813486346,
+                                "lng": -84.39638949641683,
+                                "postalCode": "30303",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "1 Philips Dr NW (at Centennial Olympic Park Dr)",
+                                    "Atlanta, GA 30303",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d18b941735",
+                                    "name": "Basketball Stadium",
+                                    "pluralName": "Basketball Stadiums",
+                                    "shortName": "Basketball",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/arts_entertainment\/stadium_basketball_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            },
+                            "venuePage": {
+                                "id": "84749529"
+                            }
+                        },
+                        "referralId": "e-0-4362bb80f964a5204c291fe3-17"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "4b80141ef964a520265030e3",
+                            "name": "Druid Hills Golf Club",
+                            "location": {
+                                "address": "740 Clifton Rd NE",
+                                "crossStreet": "Ponce de Leon Ave. NE",
+                                "lat": 33.77529765227254,
+                                "lng": -84.33118408504454,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.77529765227254,
+                                        "lng": -84.33118408504454
+                                    }
+                                ],
+                                "postalCode": "30307",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "740 Clifton Rd NE (Ponce de Leon Ave. NE)",
+                                    "Atlanta, GA 30307",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d1e6941735",
+                                    "name": "Golf Course",
+                                    "pluralName": "Golf Courses",
+                                    "shortName": "Golf Course",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/parks_outdoors\/golfcourse_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-4b80141ef964a520265030e3-18"
+                    },
+                    {
+                        "reasons": {
+                            "count": 0,
+                            "items": [
+                                {
+                                    "summary": "This spot is popular",
+                                    "type": "general",
+                                    "reasonName": "globalInteractionReason"
+                                }
+                            ]
+                        },
+                        "venue": {
+                            "id": "40e0b100f964a520b7051fe3",
+                            "name": "Bigelow's",
+                            "location": {
+                                "address": "2564 Gresham Rd SE",
+                                "lat": 33.71325860220751,
+                                "lng": -84.30998356283105,
+                                "labeledLatLngs": [
+                                    {
+                                        "label": "display",
+                                        "lat": 33.71325860220751,
+                                        "lng": -84.30998356283105
+                                    }
+                                ],
+                                "postalCode": "30316",
+                                "cc": "US",
+                                "city": "Atlanta",
+                                "state": "GA",
+                                "country": "United States",
+                                "formattedAddress": [
+                                    "2564 Gresham Rd SE",
+                                    "Atlanta, GA 30316",
+                                    "United States"
+                                ]
+                            },
+                            "categories": [
+                                {
+                                    "id": "4bf58dd8d48988d11f941735",
+                                    "name": "Nightclub",
+                                    "pluralName": "Nightclubs",
+                                    "shortName": "Nightclub",
+                                    "icon": {
+                                        "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/nightlife\/nightclub_",
+                                        "suffix": ".png"
+                                    },
+                                    "primary": true
+                                }
+                            ],
+                            "photos": {
+                                "count": 0,
+                                "groups": []
+                            }
+                        },
+                        "referralId": "e-0-40e0b100f964a520b7051fe3-19"
+                    }
+                ]
+            }
+        ]
+    }
+}
